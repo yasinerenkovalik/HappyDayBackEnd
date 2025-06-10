@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "SiBa1pIRISrAjTrlzlJJv5iXEpyTldSVdKBVJjw2o7U=",
+  "Source": "HappyDay.Api",
+  "BasePath": "_content/HappyDay.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "HappyDay.Api/wwwroot",
+      "Source": "HappyDay.Api",
+      "ContentRoot": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/",
+      "BasePath": "_content/HappyDay.Api",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

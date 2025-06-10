@@ -1,0 +1,12 @@
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/bin/Debug/net8.0/HappyDay.Domain.deps.json
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/bin/Debug/net8.0/HappyDay.Domain.dll
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/bin/Debug/net8.0/HappyDay.Domain.pdb
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/Debug/net8.0/HappyDay.Domain.csproj.AssemblyReference.cache
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/Debug/net8.0/HappyDay.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/Debug/net8.0/HappyDay.Domain.AssemblyInfoInputs.cache
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/Debug/net8.0/HappyDay.Domain.AssemblyInfo.cs
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/Debug/net8.0/HappyDay.Domain.csproj.CoreCompileInputs.cache
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/Debug/net8.0/HappyDay.Domain.dll
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/Debug/net8.0/refint/HappyDay.Domain.dll
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/Debug/net8.0/HappyDay.Domain.pdb
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/Debug/net8.0/ref/HappyDay.Domain.dll

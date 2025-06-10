@@ -1,0 +1,15 @@
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/bin/Debug/net8.0/HappyDay.Application.deps.json
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/bin/Debug/net8.0/HappyDay.Application.dll
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/bin/Debug/net8.0/HappyDay.Application.pdb
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/bin/Debug/net8.0/HappyDay.Domain.dll
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/bin/Debug/net8.0/HappyDay.Domain.pdb
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.csproj.AssemblyReference.cache
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.AssemblyInfoInputs.cache
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.AssemblyInfo.cs
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.csproj.CoreCompileInputs.cache
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.15FEA1F8.Up2Date
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.dll
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/obj/Debug/net8.0/refint/HappyDay.Application.dll
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.pdb
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/obj/Debug/net8.0/ref/HappyDay.Application.dll

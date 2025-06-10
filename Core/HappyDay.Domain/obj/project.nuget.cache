@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "dgSpecHash": "pqCVZY1bTOk=",
+  "success": true,
+  "projectFilePath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/HappyDay.Domain.csproj",
+  "expectedPackageFiles": [
+    "/Users/yasinerenkovalik/.nuget/packages/automapper/14.0.0/automapper.14.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/fluentvalidation.aspnetcore/11.3.1/fluentvalidation.aspnetcore.11.3.1.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.11.0/fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/mediatr/12.5.0/mediatr.12.5.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.entityframeworkcore/8.0.0/microsoft.entityframeworkcore.8.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.0/microsoft.entityframeworkcore.abstractions.8.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.0/microsoft.entityframeworkcore.analyzers.8.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.entityframeworkcore.relational/8.0.0/microsoft.entityframeworkcore.relational.8.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.extensions.caching.abstractions/8.0.0/microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.extensions.caching.memory/8.0.0/microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.extensions.configuration.abstractions/8.0.0/microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.extensions.logging/8.0.0/microsoft.extensions.logging.8.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0/microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.extensions.options/8.0.0/microsoft.extensions.options.8.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.extensions.primitives/8.0.0/microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/npgsql/8.0.0/npgsql.8.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/npgsql.entityframeworkcore.postgresql/8.0.0/npgsql.entityframeworkcore.postgresql.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
