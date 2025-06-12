@@ -6,6 +6,7 @@
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/Debug/net8.0/HappyDay.Domain.AssemblyInfoInputs.cache
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/Debug/net8.0/HappyDay.Domain.AssemblyInfo.cs
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/Debug/net8.0/HappyDay.Domain.csproj.CoreCompileInputs.cache
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/Debug/net8.0/HappyDay.Domain.sourcelink.json
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/Debug/net8.0/HappyDay.Domain.dll
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/Debug/net8.0/refint/HappyDay.Domain.dll
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/Debug/net8.0/HappyDay.Domain.pdb

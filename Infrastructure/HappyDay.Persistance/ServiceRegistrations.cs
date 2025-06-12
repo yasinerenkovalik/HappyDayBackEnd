@@ -1,3 +1,4 @@
+
 using HappyDay.Application.Interface.Repository;
 using HappyDay.Persistance.Context;
 using HappyDay.Persistance.Repositories;
@@ -12,7 +13,8 @@ public static class ServiceRegistrations
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IOrganizationRepository, OrganizationRepository>();
         services.AddScoped<ICompanyRepository, CompanyRepository>();
-        services.AddDbContext<HappyDayContext>();
+        
+       
         return services;
     }
 }

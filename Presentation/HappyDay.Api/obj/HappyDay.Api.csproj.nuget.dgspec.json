@@ -63,6 +63,10 @@
               "target": "Package",
               "version": "[12.5.0, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -146,6 +150,10 @@
             "MediatR": {
               "target": "Package",
               "version": "[12.5.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -235,6 +243,10 @@
               "target": "Package",
               "version": "[12.5.0, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -292,6 +304,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/HappyDay.Application.csproj": {
+                "projectPath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/HappyDay.Application.csproj"
+              },
               "/Users/yasinerenkovalik/RiderProjects/HappyDay/Infrastructure/HappyDay.Persistance/HappyDay.Persistance.csproj": {
                 "projectPath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Infrastructure/HappyDay.Persistance/HappyDay.Persistance.csproj"
               }
@@ -328,6 +343,10 @@
             "MediatR": {
               "target": "Package",
               "version": "[12.5.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",

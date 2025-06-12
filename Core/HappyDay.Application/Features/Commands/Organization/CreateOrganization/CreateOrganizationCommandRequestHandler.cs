@@ -26,14 +26,17 @@ public class CreateOrganizationCommandRequestHandler:IRequestHandler<CreateOrgan
         {
             return new GeneralResponse<CreateOrganizationCommandResponse>
             {
-                Message = Messages.MessageConstants.InvalidOrganizationData
+                Message = Messages.MessageConstants.InvalidOrganizationData,
+                isSuccess = false
+                
             };
         }
         var organization = _mapper.Map<Domain.Entities.Organization>(request);
         await _repository.AddAsync(organization);
         return new  GeneralResponse<CreateOrganizationCommandResponse>
         {
-            Message = Messages.MessageConstants.OrganizationCreated
+            Message = Messages.MessageConstants.OrganizationCreated,
+            isSuccess = true
         };
     }
 }

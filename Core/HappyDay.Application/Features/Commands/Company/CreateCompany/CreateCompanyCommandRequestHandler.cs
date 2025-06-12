@@ -8,6 +8,7 @@ namespace HappyDay.Application.Features.Commands.Company.CreateCompany;
 
 public class CreateCompanyCommandRequestHandler(
     ICompanyRepository repository,
+    
     IMapper mapper,
     IValidator<CreateCompanyCommandRequest> validator)
     : IRequestHandler<CreateCompanyCommandRequest, GeneralResponse<CreateCompanyCommandResponse>>
@@ -19,14 +20,16 @@ public class CreateCompanyCommandRequestHandler(
         {
             return new GeneralResponse<CreateCompanyCommandResponse>
             {
-                Message = Messages.MessageConstants.InvalidCompanyData
+               Message = validationResult.Errors.First().ErrorMessage,
+                isSuccess = false
             };
         }
         var company = mapper.Map<Domain.Entities.Company>(request);
         await repository.AddAsync(company);
         return new  GeneralResponse<CreateCompanyCommandResponse>
         {
-            Message = Messages.MessageConstants.CompanyCreated
+            Message = Messages.MessageConstants.CompanyCreated,
+            isSuccess = true
         };
     }
 }

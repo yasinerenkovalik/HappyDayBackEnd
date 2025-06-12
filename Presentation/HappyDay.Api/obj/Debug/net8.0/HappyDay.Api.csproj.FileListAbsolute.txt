@@ -244,3 +244,12 @@
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.genruntimeconfig.cache
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/ref/HappyDay.Api.dll
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/bin/Debug/net8.0/HappyDay.Api.staticwebassets.runtime.json
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.sourcelink.json

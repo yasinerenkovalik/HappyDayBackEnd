@@ -1,6 +1,7 @@
 using FluentValidation;
 using HappyDay.Application.Features.Commands.Company.CreateCompany;
 using HappyDay.Application.Validations.Company;
+using HappyDay.Persistance.Security;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace HappyDay.Application;
@@ -11,13 +12,14 @@ public static class ApplicationLayerService
     {
         var currentAssembly = typeof(ApplicationLayerService).Assembly;
 
-        services.AddMediatR(config =>
-        {
-            config.RegisterServicesFromAssembly(currentAssembly);
-        });
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(currentAssembly));
 
         services.AddAutoMapper(currentAssembly);
-        services.AddScoped<IValidator<CreateCompanyCommandRequest>, CompanyCreateValidator>();
+
+        // Tüm validator'ları otomatik olarak ekle
+        services.AddValidatorsFromAssembly(currentAssembly);
+        services.AddScoped<JwtService>();
+
         return services;
     }
 }
