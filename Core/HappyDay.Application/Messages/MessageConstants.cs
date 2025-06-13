@@ -9,6 +9,7 @@ public static class MessageConstants
 
     // Hata mesajları
     public const string CompanyAdressNotEmty = "adres boş geçilemez";
+    public const string CompanyLogin = "Şirket girişi başarılı";
     public const string CompanyNotFound = "Firma bulunamadı.";
     public const string InvalidCompanyData = "Geçersiz firma bilgileri.";
     public const string UnexpectedError = "Beklenmeyen bir hata oluştu.";

@@ -11,7 +11,7 @@ public class CompanyCreateValidator : AbstractValidator<CreateCompanyCommandRequ
     {
         RuleFor(x => x.Adress).NotEmpty().WithMessage(Messages.MessageConstants.CompanyAdressNotEmty);
         RuleFor(x => x.PhoneNumber).MaximumLength(12).WithMessage("en az 12 karakter girilmei");
-        RuleFor(x => x.PhoneNumber).MinimumLength(12).WithMessage("");
+    
     }
 }
 

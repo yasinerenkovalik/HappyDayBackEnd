@@ -8,10 +8,11 @@
 
    
     <ItemGroup>
-      <Folder Include="Features\Commands\Reservation\" />
+      <Folder Include="Features\Commands\Reservation\DeleteReservation\" />
+      <Folder Include="Features\Commands\Reservation\UpdateReservation\" />
       <Folder Include="Features\Commands\User\DeleteUser\" />
       <Folder Include="Features\Commands\User\UpdateUser\" />
-      <Folder Include="Features\Queries\Auth\" />
+      <Folder Include="Features\Queries\Company\GetAllCompany\" />
     </ItemGroup>
 
     <ItemGroup>
