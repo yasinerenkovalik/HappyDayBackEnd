@@ -1,7 +1,9 @@
 using FluentValidation;
 using HappyDay.Application.Features.Commands.Company.CreateCompany;
+using HappyDay.Application.Interface.Services;
 using HappyDay.Application.Validations.Company;
 using HappyDay.Persistance.Security;
+using Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace HappyDay.Application;
@@ -19,6 +21,7 @@ public static class ApplicationLayerService
         // Tüm validator'ları otomatik olarak ekle
         services.AddValidatorsFromAssembly(currentAssembly);
         services.AddScoped<JwtService>();
+        services.AddScoped<IFileService, FileService>();
 
         return services;
     }

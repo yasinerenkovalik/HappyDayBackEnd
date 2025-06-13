@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/75b05c27-89d7-4973-a33f-05fc84863617.png",
+      "PackagePath": "staticwebassets/uploads/75b05c27-89d7-4973-a33f-05fc84863617.png"
+    },
+    {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/7a6126aa-22a3-44dc-841c-4b3aaaf97aa1.mov",
+      "PackagePath": "staticwebassets/uploads/7a6126aa-22a3-44dc-841c-4b3aaaf97aa1.mov"
+    },
+    {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/b0ad4a29-3fbc-46f1-91aa-e35a54376864.png",
+      "PackagePath": "staticwebassets/uploads/b0ad4a29-3fbc-46f1-91aa-e35a54376864.png"
+    },
+    {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/b5296e82-fb36-4b9c-ab1b-ef535805d0db.mov",
+      "PackagePath": "staticwebassets/uploads/b5296e82-fb36-4b9c-ab1b-ef535805d0db.mov"
+    },
+    {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/b6b34493-c742-4235-bdd1-d73ece7a78fb.png",
+      "PackagePath": "staticwebassets/uploads/b6b34493-c742-4235-bdd1-d73ece7a78fb.png"
+    },
+    {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/d9c79449-5d02-4d67-880c-169d38b61121.png",
+      "PackagePath": "staticwebassets/uploads/d9c79449-5d02-4d67-880c-169d38b61121.png"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.HappyDay.Api.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.HappyDay.Api.props",
+      "PackagePath": "build\\HappyDay.Api.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.HappyDay.Api.props",
+      "PackagePath": "buildMultiTargeting\\HappyDay.Api.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.HappyDay.Api.props",
+      "PackagePath": "buildTransitive\\HappyDay.Api.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -11,5 +11,7 @@ public class Organization:BaseEntity
     public Guid CompanyId { get; set; }
     public Company Company { get; set; }
     public ICollection<Reservation> Reservations { get; set; }
+    public ICollection<OrganizationImage> OrganizationImages { get; set; }
+
 
 }

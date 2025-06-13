@@ -114,6 +114,40 @@ namespace HappyDay.Persistance.Migrations
                     b.ToTable("Organizations");
                 });
 
+            modelBuilder.Entity("HappyDay.Domain.Entities.OrganizationImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DeleteDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsActivated")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
+
+                    b.ToTable("OrganizationImages");
+                });
+
             modelBuilder.Entity("HappyDay.Domain.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -230,6 +264,17 @@ namespace HappyDay.Persistance.Migrations
                     b.Navigation("Company");
                 });
 
+            modelBuilder.Entity("HappyDay.Domain.Entities.OrganizationImage", b =>
+                {
+                    b.HasOne("HappyDay.Domain.Entities.Organization", "Organization")
+                        .WithMany("OrganizationImages")
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Organization");
+                });
+
             modelBuilder.Entity("Reservation", b =>
                 {
                     b.HasOne("HappyDay.Domain.Entities.Company", "Company")
@@ -256,6 +301,8 @@ namespace HappyDay.Persistance.Migrations
 
             modelBuilder.Entity("HappyDay.Domain.Entities.Organization", b =>
                 {
+                    b.Navigation("OrganizationImages");
+
                     b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
