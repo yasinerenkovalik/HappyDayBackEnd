@@ -1,6 +1,18 @@
 {
   "Files": [
     {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/34799999-db33-4972-b541-78fb8f90ea27.png",
+      "PackagePath": "staticwebassets/uploads/34799999-db33-4972-b541-78fb8f90ea27.png"
+    },
+    {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/3498b822-4f4f-49f4-b84f-b414e15fff3d.png",
+      "PackagePath": "staticwebassets/uploads/3498b822-4f4f-49f4-b84f-b414e15fff3d.png"
+    },
+    {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/467b4a3e-9c53-4b3f-8295-9a48aeab1db4.png",
+      "PackagePath": "staticwebassets/uploads/467b4a3e-9c53-4b3f-8295-9a48aeab1db4.png"
+    },
+    {
       "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/75b05c27-89d7-4973-a33f-05fc84863617.png",
       "PackagePath": "staticwebassets/uploads/75b05c27-89d7-4973-a33f-05fc84863617.png"
     },
