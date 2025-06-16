@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HappyDay.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce64aeeac717dbb6550c835be30c7642849ea152")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8be4abf577612618681bae3ffca5def19b069969")]
 [assembly: System.Reflection.AssemblyProductAttribute("HappyDay.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HappyDay.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

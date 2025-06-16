@@ -19,18 +19,18 @@ namespace HappyDay.Api.Controller
         {
             _mediator = mediator;
         }
-        [HttpPost("AddCompany")]
-        public async Task<GeneralResponse<CreateOrganizationCommandResponse>> AddCompany([FromForm] CreateOrganizationCommandRequest request)
+        [HttpPost("AddOrganization")]
+        public async Task<GeneralResponse<CreateOrganizationCommandResponse>> AddOrganization([FromForm] CreateOrganizationCommandRequest request)
         {
             return await _mediator.Send(request);
         }
-        [HttpPost("CompanyGetById")]
-        public async Task<GeneralResponse<GetByIdOrganizationQueryResponse>> CompanyGetById([FromForm] GetByIdOrganizationQueryRequest request)
+        [HttpPost("OrganizationGetById")]
+        public async Task<GeneralResponse<GetByIdOrganizationQueryResponse>> OrganizationGetById([FromForm] GetByIdOrganizationQueryRequest request)
         {
             return await _mediator.Send(request);
         }
-        [HttpGet("CompanyGetAll")]
-        public async Task<GeneralResponse<List<GetAllOrganizationQueryResponse>>> CompanyGetAll()
+        [HttpGet("OrganizationGetAll")]
+        public async Task<GeneralResponse<List<GetAllOrganizationQueryResponse>>> OrganizationGetAll()
         {
             
             return await _mediator.Send(new GetAllOrganizationQueryRequest());

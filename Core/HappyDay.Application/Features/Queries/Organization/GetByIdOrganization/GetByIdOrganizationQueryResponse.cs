@@ -7,4 +7,5 @@ public class GetByIdOrganizationQueryResponse
     public decimal Price { get; set; }
     public int MaxGuestCount { get; set; }
     public Guid CompanyId { get; set; }
+    public string? CoverPhotoPath { get; set; }
 }

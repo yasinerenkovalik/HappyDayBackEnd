@@ -51,6 +51,12 @@ public class CreateOrganizationCommandRequestHandler:IRequestHandler<CreateOrgan
         organization.OrganizationImages = new List<Domain.Entities.OrganizationImage>();
 
         // ✅ Resimleri yükle ve OrganizationImage listesine ekle
+        if (request.CoverPhoto != null)
+        {
+            var path = await _fileService.SaveFileAsync(request.CoverPhoto, "uploads/cover");
+            organization.CoverPhotoPath = path;
+        }
+    
         if (request.Images != null && request.Images.Any())
         {
             var uploadedPaths = await _fileService.SaveFilesAsync(request.Images, "uploads");

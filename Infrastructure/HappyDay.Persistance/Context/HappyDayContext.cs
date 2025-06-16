@@ -15,4 +15,5 @@ public class HappyDayContext : DbContext
     public DbSet<Organization> Organizations { get; set; }
     public DbSet<Reservation> Reservations { get; set; }
     public DbSet<OrganizationImage> OrganizationImages { get; set; }
+    public DbSet<Category> Categories { get; set; }
 }

@@ -22,6 +22,23 @@ namespace HappyDay.Persistance.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("HappyDay.Domain.Entities.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("HappyDay.Domain.Entities.Company", b =>
                 {
                     b.Property<Guid>("Id")
@@ -78,8 +95,14 @@ namespace HappyDay.Persistance.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("integer");
+
                     b.Property<Guid>("CompanyId")
                         .HasColumnType("uuid");
+
+                    b.Property<string>("CoverPhotoPath")
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("timestamp with time zone");
@@ -108,6 +131,8 @@ namespace HappyDay.Persistance.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("CompanyId");
 
@@ -255,6 +280,10 @@ namespace HappyDay.Persistance.Migrations
 
             modelBuilder.Entity("HappyDay.Domain.Entities.Organization", b =>
                 {
+                    b.HasOne("HappyDay.Domain.Entities.Category", null)
+                        .WithMany("Organizations")
+                        .HasForeignKey("CategoryId");
+
                     b.HasOne("HappyDay.Domain.Entities.Company", "Company")
                         .WithMany("Organizations")
                         .HasForeignKey("CompanyId")
@@ -292,6 +321,11 @@ namespace HappyDay.Persistance.Migrations
                     b.Navigation("Company");
 
                     b.Navigation("Organization");
+                });
+
+            modelBuilder.Entity("HappyDay.Domain.Entities.Category", b =>
+                {
+                    b.Navigation("Organizations");
                 });
 
             modelBuilder.Entity("HappyDay.Domain.Entities.Company", b =>
