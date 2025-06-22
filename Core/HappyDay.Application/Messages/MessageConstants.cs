@@ -22,6 +22,7 @@ public static class MessageConstants
     
     //Organizasyon mesaşları
     public const string OrganizationCreated = "Organizasyon başarıyla oluşturuldu.";
+    public const string OrganizationGet = "Organizasyon başarıyla Getirildi.";
     public const string OrganizationUpdated = "Organizasyon başarıyla güncellendi.";
     public const string OrganizationDeleted = "Organizasyon başarıyla silindi.";
 

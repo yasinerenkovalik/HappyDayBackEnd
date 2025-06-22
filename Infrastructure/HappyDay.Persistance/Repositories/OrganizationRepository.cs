@@ -1,3 +1,4 @@
+using HappyDay.Application.Features.Queries.Organization.GetByCompany;
 using HappyDay.Application.Features.Queries.Organization.GetOrganizationWithImages;
 using HappyDay.Application.Interface.Repository;
 using HappyDay.Domain.Entities;
@@ -25,10 +26,26 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
                 Description = o.Description,
                 Price = o.Price,
                 MaxGuestCount = o.MaxGuestCount,
-                ImageUrls = o.OrganizationImages.Select(img => img.ImageUrl).ToList()
+                ImageUrls = o.OrganizationImages.Select(img => img.ImageUrl).ToList(),
+                Location = o.Location,
+                Duration = o.Duration,
+                Services = o.Services,
+                IsOutdoor = o.IsOutdoor,
+                ReservationNote = o.ReservationNote,
+                CancelPolicy = o.CancelPolicy,
+                VideoUrl = o.VideoUrl,
+                
             })
             .FirstOrDefaultAsync();
 
         return result;
     }
+
+    public async Task<List<Organization>> GetByCompany(Guid companyId)
+    {
+        return await _context.Organizations.Where(o => o.CompanyId == companyId).ToListAsync();
+    }
+
+ 
 }
+

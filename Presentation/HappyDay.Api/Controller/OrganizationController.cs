@@ -1,6 +1,8 @@
 using AutoMapper;
 using HappyDay.Application.Features.Commands.Organization.CreateOrganization;
+using HappyDay.Application.Features.Queries.Company.GetByIdCompany;
 using HappyDay.Application.Features.Queries.Organization.GetAllOrganization;
+using HappyDay.Application.Features.Queries.Organization.GetByCompany;
 using HappyDay.Application.Features.Queries.Organization.GetByIdOrganization;
 using HappyDay.Application.Features.Queries.Organization.GetOrganizationWithImages;
 using HappyDay.Application.Wrappers;
@@ -40,6 +42,12 @@ namespace HappyDay.Api.Controller
         {
             
             return await _mediator.Send(new GetOrganizationWithImagesQueryRequest { Id = Id });
+        }
+        [HttpGet("GetOrganizationWithICompany")]
+        public async Task<GeneralResponse<List<GetByCompanyQueryResponse>>> GetOrganizationWithICompany(Guid Id)
+        {
+            
+            return await _mediator.Send(new GetByCompanyQueryRequest() { CompanyId = Id });
         }
     }
 }

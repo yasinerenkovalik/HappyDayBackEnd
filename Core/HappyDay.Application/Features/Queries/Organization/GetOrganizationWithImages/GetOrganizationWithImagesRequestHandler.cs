@@ -29,7 +29,7 @@ public class GetOrganizationWithImagesRequestHandler:IRequestHandler<GetOrganiza
         }
         return new GeneralResponse<GetOrganizationWithImagesResponse>()
         {
-            Message = Messages.MessageConstants.OrganizationNotFound,
+            Message = Messages.MessageConstants.OrganizationGet,
             isSuccess = true,
             Data = result
         };
