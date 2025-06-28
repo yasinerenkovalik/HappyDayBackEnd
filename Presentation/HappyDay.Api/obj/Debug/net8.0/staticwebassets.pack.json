@@ -5,12 +5,20 @@
       "PackagePath": "staticwebassets/uploads/04106c02-42b4-47f2-8611-668bcaa0b74f.jpg"
     },
     {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/12ec4e7e-fde9-4a55-9d48-ec3bb58b3b73.jpg",
+      "PackagePath": "staticwebassets/uploads/12ec4e7e-fde9-4a55-9d48-ec3bb58b3b73.jpg"
+    },
+    {
       "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/20ef6aa9-bf95-462c-a5f0-cf479db324b8.jpg",
       "PackagePath": "staticwebassets/uploads/20ef6aa9-bf95-462c-a5f0-cf479db324b8.jpg"
     },
     {
       "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/2ec3eed1-222f-4f62-be42-9f9d45a247ec.png",
       "PackagePath": "staticwebassets/uploads/2ec3eed1-222f-4f62-be42-9f9d45a247ec.png"
+    },
+    {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/2edece37-5a92-4657-912a-ac24e0842da6.jpeg",
+      "PackagePath": "staticwebassets/uploads/2edece37-5a92-4657-912a-ac24e0842da6.jpeg"
     },
     {
       "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/34799999-db33-4972-b541-78fb8f90ea27.png",
@@ -49,12 +57,24 @@
       "PackagePath": "staticwebassets/uploads/53462d21-07a9-42c8-9109-934b1613eabd.jpg"
     },
     {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/56cb090d-3962-4759-a541-eef2ffcae631.png",
+      "PackagePath": "staticwebassets/uploads/56cb090d-3962-4759-a541-eef2ffcae631.png"
+    },
+    {
       "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/5d0bf25f-3a53-4b1f-8f48-a31a4c7b33f3.jpg",
       "PackagePath": "staticwebassets/uploads/5d0bf25f-3a53-4b1f-8f48-a31a4c7b33f3.jpg"
     },
     {
       "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/5ed674b7-4580-4d0f-98e8-8b0096238723.jpg",
       "PackagePath": "staticwebassets/uploads/5ed674b7-4580-4d0f-98e8-8b0096238723.jpg"
+    },
+    {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/6685f007-5b6b-45ec-b969-1f1593619697.jpg",
+      "PackagePath": "staticwebassets/uploads/6685f007-5b6b-45ec-b969-1f1593619697.jpg"
+    },
+    {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/6c90fb63-b0bb-4a75-893a-2b056272236b.jpeg",
+      "PackagePath": "staticwebassets/uploads/6c90fb63-b0bb-4a75-893a-2b056272236b.jpeg"
     },
     {
       "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/75b05c27-89d7-4973-a33f-05fc84863617.png",
@@ -69,8 +89,16 @@
       "PackagePath": "staticwebassets/uploads/7d5ff5aa-b80e-4409-a633-ec05e951e793.jpg"
     },
     {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/7e86c4bc-6773-482a-8e23-19bc4eeb0c6e.jpg",
+      "PackagePath": "staticwebassets/uploads/7e86c4bc-6773-482a-8e23-19bc4eeb0c6e.jpg"
+    },
+    {
       "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/8fd3fc00-be98-46e7-91b1-e9f1850d875f.jpg",
       "PackagePath": "staticwebassets/uploads/8fd3fc00-be98-46e7-91b1-e9f1850d875f.jpg"
+    },
+    {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/94bad098-799f-4ae6-9210-e0791ed239f4.jpg",
+      "PackagePath": "staticwebassets/uploads/94bad098-799f-4ae6-9210-e0791ed239f4.jpg"
     },
     {
       "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/ab9dbc12-1f7c-4d3e-9076-b818717c4888.jpeg",
@@ -95,6 +123,10 @@
     {
       "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/b6b34493-c742-4235-bdd1-d73ece7a78fb.png",
       "PackagePath": "staticwebassets/uploads/b6b34493-c742-4235-bdd1-d73ece7a78fb.png"
+    },
+    {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/bdf7f608-72c9-4e0b-820f-0742fe8bd5f4.jpg",
+      "PackagePath": "staticwebassets/uploads/bdf7f608-72c9-4e0b-820f-0742fe8bd5f4.jpg"
     },
     {
       "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/c613ffc4-f1f1-453f-bcdd-838499ed1dc4.jpeg",
@@ -143,6 +175,10 @@
     {
       "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/cover/f10659d8-0a57-4082-84f5-fbc96cbf59f2.jpg",
       "PackagePath": "staticwebassets/uploads/cover/f10659d8-0a57-4082-84f5-fbc96cbf59f2.jpg"
+    },
+    {
+      "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/cover/ffbd8789-4515-462a-b369-ee702a04cdea.jpg",
+      "PackagePath": "staticwebassets/uploads/cover/ffbd8789-4515-462a-b369-ee702a04cdea.jpg"
     },
     {
       "Id": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/wwwroot/uploads/d9c79449-5d02-4d67-880c-169d38b61121.png",
