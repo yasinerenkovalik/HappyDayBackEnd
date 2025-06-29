@@ -47,7 +47,7 @@ public class GenericRepository<T>:IGenericRepository<T> where T:BaseEntity
 
     public async Task<List<T>> GetAllAysnc()
     {
-        return await _appContext.Set<T>().ToListAsync();
+        return await _appContext.Set<T>().Where(o=>o.IsActivated==true).ToListAsync();
     }
 
     public async Task<T> GetByIdAsync(Guid Id)

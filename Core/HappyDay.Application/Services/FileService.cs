@@ -24,6 +24,8 @@ namespace Infrastructure.Services
 
             foreach (var file in files)
             {
+                
+              
                 var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
                 var filePath = Path.Combine(uploadPath, fileName);
 

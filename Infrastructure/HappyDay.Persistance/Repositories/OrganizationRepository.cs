@@ -18,7 +18,7 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
     public  async Task<GetOrganizationWithImagesResponse> GetOrganizationWithImages(Guid Id)
     {
         var result = await _context.Organizations
-            .Where(o => o.Id == Id)
+            .Where(o => o.Id == Id && o.IsActivated == true)
             .Select(o => new GetOrganizationWithImagesResponse
             {
                 Id = o.Id,
@@ -34,6 +34,7 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
                 ReservationNote = o.ReservationNote,
                 CancelPolicy = o.CancelPolicy,
                 VideoUrl = o.VideoUrl,
+                CoverPhotoPath = o.CoverPhotoPath,
                 
             })
             .FirstOrDefaultAsync();

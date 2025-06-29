@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HappyDay.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2e423317502289af33f453d5dc4dc4e1e87dc9c4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63d25cb1b74c00ad03ea3eb415ac9e1c1ad8d00f")]
 [assembly: System.Reflection.AssemblyProductAttribute("HappyDay.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HappyDay.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

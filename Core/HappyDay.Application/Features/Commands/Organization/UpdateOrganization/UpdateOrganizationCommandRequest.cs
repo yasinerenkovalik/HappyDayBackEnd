@@ -21,5 +21,5 @@ public class UpdateOrganizationCommandRequest:IRequest<GeneralResponse<UpdateOrg
     public string CancelPolicy { get; set; }
     public string VideoUrl { get; set; }
     public IFormFile CoverPhoto { get; set; }
-    public List<IFormFile> Images { get; set; }
+
 }
