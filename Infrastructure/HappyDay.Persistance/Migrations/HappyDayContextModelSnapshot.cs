@@ -52,18 +52,6 @@ namespace HappyDay.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DeleteDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("IsActivated")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime>("UpdateDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.HasKey("Id");
 
                     b.ToTable("Cities");
@@ -130,21 +118,9 @@ namespace HappyDay.Persistance.Migrations
                     b.Property<int>("CityId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DeleteDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("DistrictName")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<bool>("IsActivated")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime>("UpdateDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 

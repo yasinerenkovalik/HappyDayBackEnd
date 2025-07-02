@@ -20,7 +20,7 @@ public class OrganizationProfile: Profile
         CreateMap<Organization, GetAllOrganizationQueryResponse>().ReverseMap();
         CreateMap<Organization, GetByCompanyQueryResponse>().ReverseMap();
         CreateMap<Organization, UpdateOrganizationCommandRequest>().ReverseMap();
-        CreateMap<Organization, GetFilteredOrganizationsQueryResponse>().ReverseMap();
+        CreateMap<Organization, GetFilteredOrganizationsQueryResponse>();
        
     }
 }

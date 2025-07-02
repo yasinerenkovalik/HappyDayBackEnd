@@ -5,7 +5,7 @@ using MediatR;
 
 namespace HappyDay.Application.Features.Queries.Organization.GetFilterOrganization;
 
-public class GetFilteredOrganizationsQueryRequestHandler:IRequestHandler<GetFilteredOrganizationsQueryRequest, GeneralResponse<GetFilteredOrganizationsQueryResponse>>
+public class GetFilteredOrganizationsQueryRequestHandler:IRequestHandler<GetFilteredOrganizationsQueryRequest, GeneralResponse<List<GetFilteredOrganizationsQueryResponse>>>
 {
     private readonly IOrganizationRepository _repository;
     private readonly IMapper _mapper;
@@ -16,13 +16,14 @@ public class GetFilteredOrganizationsQueryRequestHandler:IRequestHandler<GetFilt
         _mapper = mapper;
     }
 
-    public async Task<GeneralResponse<GetFilteredOrganizationsQueryResponse>> Handle(GetFilteredOrganizationsQueryRequest request, CancellationToken cancellationToken)
+    public async Task<GeneralResponse<List<GetFilteredOrganizationsQueryResponse>>> Handle(GetFilteredOrganizationsQueryRequest request, CancellationToken cancellationToken)
     {
         var organizations = await _repository.GetFilteredAsync(
            request);
         
-        var response = _mapper.Map<GetFilteredOrganizationsQueryResponse>(organizations);
-        return new GeneralResponse<GetFilteredOrganizationsQueryResponse>()
+        var response = _mapper.Map<List<GetFilteredOrganizationsQueryResponse>>(organizations);
+
+        return new GeneralResponse<List<GetFilteredOrganizationsQueryResponse>>()
         {
             Data = response
         };

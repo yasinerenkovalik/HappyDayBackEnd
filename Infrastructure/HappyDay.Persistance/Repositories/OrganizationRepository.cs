@@ -57,9 +57,8 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
     public async Task<List<Organization>> GetFilteredAsync(GetFilteredOrganizationsQueryRequest  request)
     {
         var query = _context.Organizations
-            .Include(x => x.CityId)
-            .Include(x => x.DistrictId)
-            .Include(x => x.CategoryId)
+            .Include(x => x.City)
+            .Include(x => x.District)
             .AsQueryable();
 
         if (request.CityId.HasValue)

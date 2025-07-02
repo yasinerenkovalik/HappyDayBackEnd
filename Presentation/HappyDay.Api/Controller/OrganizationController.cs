@@ -61,7 +61,7 @@ namespace HappyDay.Api.Controller
             return await _mediator.Send(request);
         }
         [HttpGet("Filter")]
-        public async Task<GeneralResponse<GetFilteredOrganizationsQueryResponse>>GetFiltered([FromQuery] GetFilteredOrganizationsQueryRequest query)
+        public async Task<GeneralResponse<List<GetFilteredOrganizationsQueryResponse>>>GetFiltered([FromQuery] GetFilteredOrganizationsQueryRequest query)
         {
             return await _mediator.Send(query);
             

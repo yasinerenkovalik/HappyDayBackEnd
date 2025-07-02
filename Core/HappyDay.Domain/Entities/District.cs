@@ -1,9 +1,11 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using HappyDay.Domain.Entities.BaseEntites;
 
 namespace HappyDay.Domain.Entities
 {
-    public class District : BaseEntity
+    public class District 
     {
+      
         public int Id { get; set; } 
         public string DistrictName { get; set; }
 
