@@ -15,5 +15,6 @@ public class GetOrganizationWithImagesResponse
     public string CancelPolicy { get; set; }
     public string VideoUrl { get; set; }
     public string? CoverPhotoPath { get; set; }
-    public List<string> ImageUrls { get; set; }
+    
+    public List<OrganizationImageDto> Images { get; set; }
 }

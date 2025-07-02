@@ -1,4 +1,5 @@
 using HappyDay.Application.Features.Queries.Organization.GetByCompany;
+using HappyDay.Application.Features.Queries.Organization.GetFilterOrganization;
 using HappyDay.Application.Features.Queries.Organization.GetOrganizationWithImages;
 using HappyDay.Domain.Entities;
 
@@ -8,4 +9,8 @@ public interface IOrganizationRepository:IGenericRepository<Organization>
 {
     Task<GetOrganizationWithImagesResponse> GetOrganizationWithImages(Guid Id);
     Task<List<Organization>> GetByCompany(Guid companyId);
+    Task<List<Organization>> GetFilteredAsync(
+        GetFilteredOrganizationsQueryRequest request);
+
+    
 }

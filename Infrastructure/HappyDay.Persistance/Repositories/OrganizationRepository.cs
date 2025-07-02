@@ -1,4 +1,5 @@
 using HappyDay.Application.Features.Queries.Organization.GetByCompany;
+using HappyDay.Application.Features.Queries.Organization.GetFilterOrganization;
 using HappyDay.Application.Features.Queries.Organization.GetOrganizationWithImages;
 using HappyDay.Application.Interface.Repository;
 using HappyDay.Domain.Entities;
@@ -15,10 +16,10 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
         _context = appContext;
     }
 
-    public  async Task<GetOrganizationWithImagesResponse> GetOrganizationWithImages(Guid Id)
+    public async Task<GetOrganizationWithImagesResponse> GetOrganizationWithImages(Guid Id)
     {
         var result = await _context.Organizations
-            .Where(o => o.Id == Id && o.IsActivated == true)
+            .Where(o => o.Id == Id)
             .Select(o => new GetOrganizationWithImagesResponse
             {
                 Id = o.Id,
@@ -26,7 +27,13 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
                 Description = o.Description,
                 Price = o.Price,
                 MaxGuestCount = o.MaxGuestCount,
-                ImageUrls = o.OrganizationImages.Select(img => img.ImageUrl).ToList(),
+                Images = o.OrganizationImages
+                    .Where(img => img.IsActivated == true)
+                    .Select(img => new OrganizationImageDto
+                    {
+                        Id = img.Id,
+                        ImageUrl = img.ImageUrl
+                    }).ToList(),
                 Location = o.Location,
                 Duration = o.Duration,
                 Services = o.Services,
@@ -35,18 +42,42 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
                 CancelPolicy = o.CancelPolicy,
                 VideoUrl = o.VideoUrl,
                 CoverPhotoPath = o.CoverPhotoPath,
-                
             })
             .FirstOrDefaultAsync();
 
         return result;
     }
 
+
     public async Task<List<Organization>> GetByCompany(Guid companyId)
     {
         return await _context.Organizations.Where(o => o.CompanyId == companyId).ToListAsync();
     }
 
- 
+    public async Task<List<Organization>> GetFilteredAsync(GetFilteredOrganizationsQueryRequest  request)
+    {
+        var query = _context.Organizations
+            .Include(x => x.CityId)
+            .Include(x => x.DistrictId)
+            .Include(x => x.CategoryId)
+            .AsQueryable();
+
+        if (request.CityId.HasValue)
+            query = query.Where(x => x.CityId == request.CityId);
+
+        if (request.DistrictId.HasValue)
+            query = query.Where(x => x.DistrictId == request.DistrictId);
+
+        if (request.CategoryId.HasValue)
+            query = query.Where(x => x.CategoryId == request.CategoryId);
+
+        if (request.IsOutdoor.HasValue)
+            query = query.Where(x => x.IsOutdoor == request.IsOutdoor);
+
+        if (request.MaxPrice.HasValue)
+            query = query.Where(x => x.Price <= request.MaxPrice);
+
+        return await query.ToListAsync();
+    }
 }
 

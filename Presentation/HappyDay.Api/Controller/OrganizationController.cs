@@ -5,11 +5,13 @@ using HappyDay.Application.Features.Queries.Company.GetByIdCompany;
 using HappyDay.Application.Features.Queries.Organization.GetAllOrganization;
 using HappyDay.Application.Features.Queries.Organization.GetByCompany;
 using HappyDay.Application.Features.Queries.Organization.GetByIdOrganization;
+using HappyDay.Application.Features.Queries.Organization.GetFilterOrganization;
 using HappyDay.Application.Features.Queries.Organization.GetOrganizationWithImages;
 using HappyDay.Application.Wrappers;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol.Plugins;
 
 namespace HappyDay.Api.Controller
 {
@@ -57,6 +59,12 @@ namespace HappyDay.Api.Controller
         {
             
             return await _mediator.Send(request);
+        }
+        [HttpGet("Filter")]
+        public async Task<GeneralResponse<GetFilteredOrganizationsQueryResponse>>GetFiltered([FromQuery] GetFilteredOrganizationsQueryRequest query)
+        {
+            return await _mediator.Send(query);
+            
         }
     }
 }

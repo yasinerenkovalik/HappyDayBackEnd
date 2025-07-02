@@ -8,7 +8,6 @@
 
    
     <ItemGroup>
-      <Folder Include="Features\Commands\OrganizationImages\DeleteOrganizationImages\" />
       <Folder Include="Features\Commands\Reservation\DeleteReservation\" />
       <Folder Include="Features\Commands\Reservation\UpdateReservation\" />
       <Folder Include="Features\Commands\User\DeleteUser\" />
