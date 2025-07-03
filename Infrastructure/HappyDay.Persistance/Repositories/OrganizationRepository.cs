@@ -34,7 +34,7 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
                         Id = img.Id,
                         ImageUrl = img.ImageUrl
                     }).ToList(),
-                Location = o.Location,
+           
                 Duration = o.Duration,
                 Services = o.Services,
                 IsOutdoor = o.IsOutdoor,

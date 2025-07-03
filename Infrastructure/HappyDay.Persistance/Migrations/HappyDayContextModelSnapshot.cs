@@ -174,10 +174,6 @@ namespace HappyDay.Persistance.Migrations
                     b.Property<bool>("IsOutdoor")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<int>("MaxGuestCount")
                         .HasColumnType("integer");
 
