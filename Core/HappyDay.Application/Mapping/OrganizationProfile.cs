@@ -5,6 +5,7 @@ using HappyDay.Application.Features.Commands.Organization.UpdateOrganization;
 using HappyDay.Application.Features.Queries.Organization.GetAllOrganization;
 using HappyDay.Application.Features.Queries.Organization.GetByCompany;
 using HappyDay.Application.Features.Queries.Organization.GetByIdOrganization;
+using HappyDay.Application.Features.Queries.Organization.GetFeatured;
 using HappyDay.Application.Features.Queries.Organization.GetFilterOrganization;
 using HappyDay.Domain.Entities;
 
@@ -20,7 +21,8 @@ public class OrganizationProfile: Profile
         CreateMap<Organization, GetAllOrganizationQueryResponse>().ReverseMap();
         CreateMap<Organization, GetByCompanyQueryResponse>().ReverseMap();
         CreateMap<Organization, UpdateOrganizationCommandRequest>().ReverseMap();
-        CreateMap<Organization, GetFilteredOrganizationsQueryResponse>();
+        CreateMap<Organization, GetFilteredOrganizationsQueryResponse>().ReverseMap();
+        CreateMap<Organization, GetFeaturedQueryResponse>().ReverseMap();
        
     }
 }

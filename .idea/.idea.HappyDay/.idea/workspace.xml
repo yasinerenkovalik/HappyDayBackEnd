@@ -9,20 +9,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46db3ca8-5550-442b-92a0-5e74699e5c55" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Core/HappyDay.Application/Features/Queries/Citys/GetAllCity/GetAllCityQueryRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/HappyDay.Application/Features/Queries/Citys/GetAllCity/GetAllCityQueryRequestHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/HappyDay.Application/Features/Queries/Citys/GetAllCity/GetAllCityQueryResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/HappyDay.Application/Features/Queries/District/GetAllDistrict/GetAllDisctrictByCityRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/HappyDay.Application/Features/Queries/District/GetAllDistrict/GetAllDisctrictByCityRequestHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/HappyDay.Application/Features/Queries/District/GetAllDistrict/GetAllDisctrictByCityResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/HappyDay.Application/Interface/Repository/ICityesRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/HappyDay.Application/Interface/Repository/IDistrictRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/HappyDay.Application/Mapping/CityesProfile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/HappyDay.Application/Mapping/DistrictProfile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/Repositories/CityesRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/Repositories/DistrictRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HappyDay/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HappyDay/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/HappyDay.Application/Features/Commands/Organization/CreateOrganization/CreateOrganizationCommandRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Application/Features/Commands/Organization/CreateOrganization/CreateOrganizationCommandRequest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/HappyDay.Application/bin/Debug/net8.0/HappyDay.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Application/bin/Debug/net8.0/HappyDay.Application.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/HappyDay.Application/bin/Debug/net8.0/HappyDay.Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Application/bin/Debug/net8.0/HappyDay.Application.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/HappyDay.Application/bin/Debug/net8.0/HappyDay.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Application/bin/Debug/net8.0/HappyDay.Domain.dll" afterDir="false" />
@@ -30,13 +17,11 @@
       <change beforePath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/HappyDay.Application.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/ref/HappyDay.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/ref/HappyDay.Application.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/refint/HappyDay.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Application/obj/Debug/net8.0/refint/HappyDay.Application.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/HappyDay.Domain/Entities/Organization.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Domain/Entities/Organization.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/HappyDay.Domain/bin/Debug/net8.0/HappyDay.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Domain/bin/Debug/net8.0/HappyDay.Domain.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/HappyDay.Domain/bin/Debug/net8.0/HappyDay.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Domain/bin/Debug/net8.0/HappyDay.Domain.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/HappyDay.Domain/obj/Debug/net8.0/HappyDay.Domain.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Domain/obj/Debug/net8.0/HappyDay.Domain.AssemblyInfo.cs" afterDir="false" />
@@ -48,9 +33,6 @@
       <change beforePath="$PROJECT_DIR$/Core/HappyDay.Domain/obj/Debug/net8.0/refint/HappyDay.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Core/HappyDay.Domain/obj/Debug/net8.0/refint/HappyDay.Domain.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/HappyDay.Infrastructure/obj/Debug/net8.0/HappyDay.Infrastructure.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/HappyDay.Infrastructure/obj/Debug/net8.0/HappyDay.Infrastructure.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/HappyDay.Infrastructure/obj/Debug/net8.0/HappyDay.Infrastructure.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/HappyDay.Infrastructure/obj/Debug/net8.0/HappyDay.Infrastructure.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/Migrations/HappyDayContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/Migrations/HappyDayContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/Repositories/OrganizationRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/Repositories/OrganizationRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/ServiceRegistrations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/ServiceRegistrations.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/bin/Debug/net8.0/HappyDay.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/bin/Debug/net8.0/HappyDay.Application.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/bin/Debug/net8.0/HappyDay.Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/bin/Debug/net8.0/HappyDay.Application.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/bin/Debug/net8.0/HappyDay.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/bin/Debug/net8.0/HappyDay.Domain.dll" afterDir="false" />
@@ -60,7 +42,6 @@
       <change beforePath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/obj/Debug/net8.0/HappyDay.Persistance.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/obj/Debug/net8.0/HappyDay.Persistance.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/obj/Debug/net8.0/HappyDay.Persistance.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/obj/Debug/net8.0/HappyDay.Persistance.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/obj/Debug/net8.0/HappyDay.Persistance.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/obj/Debug/net8.0/HappyDay.Persistance.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/obj/Debug/net8.0/HappyDay.Persistance.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/obj/Debug/net8.0/HappyDay.Persistance.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/obj/Debug/net8.0/HappyDay.Persistance.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/obj/Debug/net8.0/HappyDay.Persistance.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/obj/Debug/net8.0/HappyDay.Persistance.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/obj/Debug/net8.0/HappyDay.Persistance.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/obj/Debug/net8.0/HappyDay.Persistance.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/HappyDay.Persistance/obj/Debug/net8.0/HappyDay.Persistance.sourcelink.json" afterDir="false" />
@@ -78,7 +59,6 @@
       <change beforePath="$PROJECT_DIR$/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.sourcelink.json" afterDir="false" />
@@ -232,6 +212,8 @@
       <workItem from="1751481087651" duration="1783000" />
       <workItem from="1751485082191" duration="610000" />
       <workItem from="1751559585262" duration="3507000" />
+      <workItem from="1751564390603" duration="46000" />
+      <workItem from="1751903571328" duration="1771000" />
     </task>
     <task id="LOCAL-00001" summary="Day-1">
       <option name="closed" value="true" />
@@ -329,7 +311,23 @@
       <option name="project" value="LOCAL" />
       <updated>1751484517648</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="city and districkt">
+      <option name="closed" value="true" />
+      <created>1751564408920</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1751564408920</updated>
+    </task>
+    <task id="LOCAL-00014" summary="city and districkt">
+      <option name="closed" value="true" />
+      <created>1751564433402</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1751564433402</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,7 +360,8 @@
     <MESSAGE value="day-10" />
     <MESSAGE value="day11" />
     <MESSAGE value="filter" />
-    <option name="LAST_COMMIT_MESSAGE" value="filter" />
+    <MESSAGE value="city and districkt" />
+    <option name="LAST_COMMIT_MESSAGE" value="city and districkt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

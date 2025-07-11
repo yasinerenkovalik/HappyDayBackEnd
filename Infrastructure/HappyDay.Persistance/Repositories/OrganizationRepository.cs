@@ -78,5 +78,11 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
 
         return await query.ToListAsync();
     }
+    public async Task<List<Organization>> GetFeaturedAsync()
+    {
+        return await _context.Organizations
+            .Where(o => o.IsFeatured && o.IsActivated)
+            .ToListAsync();
+    }
 }
 

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HappyDay.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d5dd80664ac4513280bdc7536e6b3aa82ff0854")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e76eee11863b9328d7074a9cbba0b51c4de4f29a")]
 [assembly: System.Reflection.AssemblyProductAttribute("HappyDay.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HappyDay.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
