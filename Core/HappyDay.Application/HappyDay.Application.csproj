@@ -12,7 +12,6 @@
       <Folder Include="Features\Commands\Reservation\UpdateReservation\" />
       <Folder Include="Features\Commands\User\DeleteUser\" />
       <Folder Include="Features\Commands\User\UpdateUser\" />
-      <Folder Include="Features\Queries\Company\GetAllCompany\" />
     </ItemGroup>
 
     <ItemGroup>

@@ -231,11 +231,6 @@
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.MvcApplicationPartsAssemblyInfo.cache
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/staticwebassets.build.json
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/staticwebassets.development.json
-/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/staticwebassets/msbuild.HappyDay.Api.Microsoft.AspNetCore.StaticWebAssets.props
-/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/staticwebassets/msbuild.build.HappyDay.Api.props
-/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.HappyDay.Api.props
-/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.HappyDay.Api.props
-/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/staticwebassets.pack.json
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/scopedcss/bundle/HappyDay.Api.styles.css
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.C8389E01.Up2Date
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.dll
@@ -253,3 +248,10 @@
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
 /Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/HappyDay.Api.sourcelink.json
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/bin/Debug/net8.0/HappyDay.Api.staticwebassets.endpoints.json
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/rpswa.dswa.cache.json
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/rjimswa.dswa.cache.json
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/rjsmrazor.dswa.cache.json
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/rjsmcshtml.dswa.cache.json
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/staticwebassets.build.json.cache
+/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/Debug/net8.0/staticwebassets.build.endpoints.json

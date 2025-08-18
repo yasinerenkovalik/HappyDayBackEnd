@@ -1,3 +1,4 @@
+using System.Text;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using HappyDay.Api.Extension;
@@ -5,17 +6,17 @@ using HappyDay.Application;
 using HappyDay.Application.Validations.Company;
 using HappyDay.Persistance;
 using HappyDay.Persistance.Context;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 {
     Args = args,
-    WebRootPath = "wwwroot" // BU SATIR KRİTİK
+    WebRootPath = "wwwroot"
 });
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddControllers().AddFluentValidation(conf=>conf.RegisterValidatorsFromAssemblyContaining<CompanyCreateValidator>());
-
+// Add services to the container
+builder.Services.AddControllers().AddFluentValidation(conf =>
+    conf.RegisterValidatorsFromAssemblyContaining<CompanyCreateValidator>());
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -26,28 +27,47 @@ builder.Services.AddAplicationLayerServices();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll",
-        policy => policy.AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader());
+    options.AddPolicy("AllowAll", policy =>
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader());
 });
+
+// ✅ AUTHENTICATION ve AUTHORIZATION yapılandırması burada olmalı
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = "yourdomain.com",
+            ValidAudience = "yourdomain.com",
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("BuCokGizliVeUzunBirSecretKeyOlsun1234"))
+        };
+    });
+
+builder.Services.AddAuthorization();
+
+// ✅ builder.Build en sonda çağrılmalı
 var app = builder.Build();
 
-
-
-
-// Configure the HTTP request pipeline.
+// Middleware'leri sırayla ekle
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseHttpsRedirection();
-app.UseCors("AllowAll");
-app.UseStaticFiles();
-app.UseAuthentication();
-app.UseAuthorization();
-app.MapControllers();
 
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseCors("AllowAll");
+
+app.UseAuthentication(); // önce authentication
+app.UseAuthorization();  // sonra authorization
+
+app.MapControllers();
 
 app.Run();

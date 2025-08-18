@@ -1,6 +1,6 @@
-namespace HappyDay.Application.Features.Queries.Company.GetByIdCompany;
+namespace HappyDay.Application.Features.Queries.Company.GetAllCompany;
 
-public class GetByIdCompanyQueryResponse
+public class GetAllCompanyQueryResponse
 {
     public string Name { get; set; }
     public string Email { get; set; }
@@ -8,6 +8,5 @@ public class GetByIdCompanyQueryResponse
     public string Adress { get; set; }
     public string PhoneNumber { get; set; }
     public string Description { get; set; }
-    public decimal Latitude { get; set; }
-    public decimal Longitude { get; set; }
+    public Guid Id { get; set; }
 }

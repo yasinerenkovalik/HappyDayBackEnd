@@ -31,7 +31,7 @@ public class GetAllOrganizationQueryRequestHandler:IRequestHandler<GetAllOrganiz
         return new GeneralResponse<List<GetAllOrganizationQueryResponse>>()
         {
             Message = Messages.MessageConstants.OrganizationNotFound,
-            isSuccess = false,
+            isSuccess = true,
             Data = organization
         };
     }

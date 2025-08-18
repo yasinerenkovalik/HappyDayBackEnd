@@ -18,7 +18,7 @@ public class GetFeaturedQueryRequestHandler:IRequestHandler<GetFeaturedQueryRequ
 
     public  async Task<GeneralResponse<List<GetFeaturedQueryResponse>>> Handle(GetFeaturedQueryRequest request, CancellationToken cancellationToken)
     {
-        var result = await _organizationRepository.GetFeaturedAsync();
+        var result = await _organizationRepository.GetFeaturedAsync(request);
        
         return new GeneralResponse<List<GetFeaturedQueryResponse>>()
         {

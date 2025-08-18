@@ -67,10 +67,10 @@ namespace HappyDay.Api.Controller
             return await _mediator.Send(query);
             
         }
-        [HttpGet("GetFeatured")]
-        public async Task<GeneralResponse<List<GetFeaturedQueryResponse>>> GetFeatured()
+        [HttpPost("GetFeatured")]
+        public async Task<GeneralResponse<List<GetFeaturedQueryResponse>>> GetFeatured( GetFeaturedQueryRequest query)
         {
-            return await _mediator.Send(new GetFeaturedQueryRequest());
+            return await _mediator.Send(query);
         }
 
     }

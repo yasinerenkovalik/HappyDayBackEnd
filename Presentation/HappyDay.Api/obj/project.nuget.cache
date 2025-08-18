@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8yUMYKT1Eug=",
+  "dgSpecHash": "Yk8HX0lzEQE=",
   "success": true,
   "projectFilePath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/HappyDay.Api.csproj",
   "expectedPackageFiles": [
@@ -153,7 +153,10 @@
     "/Users/yasinerenkovalik/.nuget/packages/system.text.json/7.0.3/system.text.json.7.0.3.nupkg.sha512",
     "/Users/yasinerenkovalik/.nuget/packages/system.threading.channels/7.0.0/system.threading.channels.7.0.0.nupkg.sha512",
     "/Users/yasinerenkovalik/.nuget/packages/system.threading.tasks.dataflow/7.0.0/system.threading.tasks.dataflow.7.0.0.nupkg.sha512",
-    "/Users/yasinerenkovalik/.nuget/packages/system.windows.extensions/7.0.0/system.windows.extensions.7.0.0.nupkg.sha512"
+    "/Users/yasinerenkovalik/.nuget/packages/system.windows.extensions/7.0.0/system.windows.extensions.7.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.netcore.app.ref/8.0.18/microsoft.netcore.app.ref.8.0.18.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.18/microsoft.aspnetcore.app.ref.8.0.18.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.netcore.app.host.osx-arm64/8.0.18/microsoft.netcore.app.host.osx-arm64.8.0.18.nupkg.sha512"
   ],
   "logs": []
 }

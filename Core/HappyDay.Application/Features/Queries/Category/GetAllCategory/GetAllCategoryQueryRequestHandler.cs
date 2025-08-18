@@ -31,6 +31,7 @@ public class GetAllCategoryQueryRequestHandler:IRequestHandler<GetAllCategoryQue
         {
             Data = _mapper.Map<List<GetAllCategoryQueryResponse>>(response),
             Message = "Ok",
+            isSuccess = true
         };
     }
 }

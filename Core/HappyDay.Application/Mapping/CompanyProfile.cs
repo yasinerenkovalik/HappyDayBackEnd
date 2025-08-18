@@ -1,6 +1,8 @@
 using AutoMapper;
 using HappyDay.Application.Features.Commands.Company.CreateCompany;
 using HappyDay.Application.Features.Commands.Company.UpdateCompany;
+using HappyDay.Application.Features.Queries.Citys.GetAllCity;
+using HappyDay.Application.Features.Queries.Company.GetAllCompany;
 using HappyDay.Application.Features.Queries.Company.GetByIdCompany;
 using HappyDay.Domain.Entities;
 
@@ -14,5 +16,7 @@ public class CompanyProfile: Profile
         CreateMap<Company, CreateCompanyCommandRequest>().ReverseMap();
         CreateMap<Company, UpdateCompanyCommandResponse>().ReverseMap();
         CreateMap<Company, GetByIdCompanyQueryResponse>().ReverseMap();
+        CreateMap<Company, GetAllCompanyQueryResponse>().ReverseMap();
+        CreateMap<Company, UpdateCompanyCommandRequest>().ReverseMap();
     }
 }

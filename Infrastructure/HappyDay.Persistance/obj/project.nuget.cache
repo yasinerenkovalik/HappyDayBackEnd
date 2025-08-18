@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QCCBBZnZEMg=",
+  "dgSpecHash": "lo4VtuIeDzs=",
   "success": true,
   "projectFilePath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Infrastructure/HappyDay.Persistance/HappyDay.Persistance.csproj",
   "expectedPackageFiles": [
@@ -57,7 +57,9 @@
     "/Users/yasinerenkovalik/.nuget/packages/system.text.encoding.codepages/6.0.0/system.text.encoding.codepages.6.0.0.nupkg.sha512",
     "/Users/yasinerenkovalik/.nuget/packages/system.text.encodings.web/8.0.0/system.text.encodings.web.8.0.0.nupkg.sha512",
     "/Users/yasinerenkovalik/.nuget/packages/system.text.json/8.0.0/system.text.json.8.0.0.nupkg.sha512",
-    "/Users/yasinerenkovalik/.nuget/packages/system.threading.channels/6.0.0/system.threading.channels.6.0.0.nupkg.sha512"
+    "/Users/yasinerenkovalik/.nuget/packages/system.threading.channels/6.0.0/system.threading.channels.6.0.0.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.netcore.app.ref/8.0.18/microsoft.netcore.app.ref.8.0.18.nupkg.sha512",
+    "/Users/yasinerenkovalik/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.18/microsoft.aspnetcore.app.ref.8.0.18.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,4 +1,5 @@
 using HappyDay.Application.Features.Queries.Organization.GetByCompany;
+using HappyDay.Application.Features.Queries.Organization.GetFeatured;
 using HappyDay.Application.Features.Queries.Organization.GetFilterOrganization;
 using HappyDay.Application.Features.Queries.Organization.GetOrganizationWithImages;
 using HappyDay.Application.Interface.Repository;
@@ -27,6 +28,10 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
                 Description = o.Description,
                 Price = o.Price,
                 MaxGuestCount = o.MaxGuestCount,
+                CategoryId = o.CategoryId,
+                CityId=o.CityId,
+                Latitude = o.Company.Latitude,
+                Longitude = o.Company.Longitude,
                 Images = o.OrganizationImages
                     .Where(img => img.IsActivated == true)
                     .Select(img => new OrganizationImageDto
@@ -78,10 +83,10 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
 
         return await query.ToListAsync();
     }
-    public async Task<List<Organization>> GetFeaturedAsync()
+    public async Task<List<Organization>> GetFeaturedAsync(GetFeaturedQueryRequest  request)
     {
         return await _context.Organizations
-            .Where(o => o.IsFeatured && o.IsActivated)
+            .Where(o => o.IsFeatured && o.IsActivated && o.CategoryId==request.Id)
             .ToListAsync();
     }
 }

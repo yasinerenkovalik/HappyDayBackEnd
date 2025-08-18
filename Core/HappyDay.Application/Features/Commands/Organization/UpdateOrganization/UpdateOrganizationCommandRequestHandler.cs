@@ -49,10 +49,7 @@ namespace HappyDay.Application.Features.Commands.Organization.UpdateOrganization
             {
                 Message = Messages.MessageConstants.OrganizationUpdated,
                 isSuccess = true,
-                Data = new UpdateOrganizationCommandResponse
-                {
-                    
-                }
+              
             };
         }
     }

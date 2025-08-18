@@ -22,7 +22,8 @@ public class GetAllCityQueryRequestHandler:IRequestHandler<GetAllCityQueryReques
         
         return new GeneralResponse<List<GetAllCityQueryResponse>>()
         {
-            Data = _mapper.Map<List<GetAllCityQueryResponse>>(result)
+            Data = _mapper.Map<List<GetAllCityQueryResponse>>(result),
+            isSuccess = true
         };
     }
 }

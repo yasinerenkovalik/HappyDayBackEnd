@@ -6,48 +6,76 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace HappyDay.Persistance.Security;
 
-public class JwtService(IConfiguration configuration)
+public class JwtService
 {
-    public string GenerateToken(string userId, string role)
+    private readonly string _issuer;
+    private readonly string _audience;
+    private readonly string _secret;
+    private readonly int _expirationMinutes;
+
+    public JwtService(IConfiguration configuration)
     {
-        var jwtSettings = configuration.GetSection("JwtSettings");
-        
-        var secretKeyString = jwtSettings["Secret"];
-        if (string.IsNullOrEmpty(secretKeyString))
-        {
-            throw new ArgumentNullException("JwtSettings:Secret", "JWT Secret değeri bulunamadı!");
-        }
+        var jwt = configuration.GetSection("JwtSettings");
+        _secret = jwt["Secret"] ?? throw new ArgumentNullException("JwtSettings:Secret");
+        _issuer = jwt["Issuer"] ?? throw new ArgumentNullException("JwtSettings:Issuer");
+        _audience = jwt["Audience"] ?? throw new ArgumentNullException("JwtSettings:Audience");
+        if (!int.TryParse(jwt["ExpirationInMinutes"], out _expirationMinutes))
+            throw new ArgumentException("JwtSettings:ExpirationInMinutes geçersiz.");
+    }
 
-        var secretKey = Encoding.UTF8.GetBytes(secretKeyString);
-        var issuer = jwtSettings["Issuer"] ?? throw new ArgumentNullException("JwtSettings:Issuer", "JWT Issuer bulunamadı!");
-        var audience = jwtSettings["Audience"] ?? throw new ArgumentNullException("JwtSettings:Audience", "JWT Audience bulunamadı!");
-
-        if (!int.TryParse(jwtSettings["ExpirationInMinutes"], out var expirationMinutes))
+    // 1) ADMIN için sade fonksiyon
+    public string GenerateAdminToken(string userId)
+    {
+        var claims = new List<Claim>
         {
-            throw new ArgumentException("JwtSettings:ExpirationInMinutes geçerli bir sayı değil!");
-        }
+            new(ClaimTypes.NameIdentifier, userId),
+            new(ClaimTypes.Role, "Admin")
+        };
+        return BuildToken(claims);
+    }
+
+    // 2) COMPANY için ayrı fonksiyon (companyId zorunlu)
+    public string GenerateCompanyToken(string userId, string companyId)
+    {
+        if (!Guid.TryParse(companyId, out _))
+            throw new ArgumentException("companyId geçerli bir GUID olmalı.", nameof(companyId));
 
         var claims = new List<Claim>
         {
-            new Claim("userId", userId),
-            new Claim("role", role)
+            new(ClaimTypes.NameIdentifier, userId), // nameid
+            new(ClaimTypes.Role, "Company"),
+            new("CompanyId", companyId)             // özel claim
         };
+        return BuildToken(claims);
+    }
+    public string GenerateUserToken(string userId)
+    {
+        var claims = new List<Claim>
+        {
+            new(ClaimTypes.NameIdentifier, userId),
+            new(ClaimTypes.Role, "User"),
+            new("CompanyId", userId)   
+        };
+        return BuildToken(claims);
+    }
 
-        var key = new SymmetricSecurityKey(secretKey);
+    // Ortak token üretimi
+    private string BuildToken(IEnumerable<Claim> claims)
+    {
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secret));
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims),
-            Expires = DateTime.UtcNow.AddMinutes(expirationMinutes),
-            Issuer = issuer,
-            Audience = audience,
+            Expires = DateTime.UtcNow.AddMinutes(_expirationMinutes),
+            Issuer = _issuer,
+            Audience = _audience,
             SigningCredentials = credentials
         };
 
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-
-        return tokenHandler.WriteToken(token);
+        var handler = new JwtSecurityTokenHandler();
+        var token = handler.CreateToken(tokenDescriptor);
+        return handler.WriteToken(token);
     }
 }

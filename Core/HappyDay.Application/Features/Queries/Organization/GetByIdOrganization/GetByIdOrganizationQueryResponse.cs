@@ -14,5 +14,6 @@ public class GetByIdOrganizationQueryResponse
     public string CancelPolicy { get; set; }
     public string VideoUrl { get; set; }
     public Guid CompanyId { get; set; }
+    public int? CategoryId { get; set; }
     public string? CoverPhotoPath { get; set; }
 }

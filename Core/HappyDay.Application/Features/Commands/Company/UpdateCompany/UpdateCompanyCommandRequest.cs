@@ -10,4 +10,6 @@ public class UpdateCompanyCommandRequest:IRequest<GeneralResponse<UpdateCompanyC
     public string Adress { get; set; }
     public string PhoneNumber { get; set; }
     public string Description { get; set; }
+    public decimal Latitude { get; set; }
+    public decimal Longitude { get; set; }
 }

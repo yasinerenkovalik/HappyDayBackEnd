@@ -3,39 +3,74 @@ using HappyDay.Application.Wrappers;
 using HappyDay.Persistance.Security;
 using MediatR;
 
-namespace HappyDay.Application.Features.Queries.Auth.OrganizationLogin;
+// Eğer BCrypt kullanıyorsan:
 
-public class CompanyLoginQueryRequestHandler:IRequestHandler<CompanyLoginQueryRequest, GeneralResponse<CompanyLoginQueryResponse>>
+
+namespace HappyDay.Application.Features.Queries.Auth.OrganizationLogin
 {
-    private readonly ICompanyRepository  _companyRepository;
-    private readonly JwtService  _jwtService;
-
-    public CompanyLoginQueryRequestHandler(ICompanyRepository companyRepository, JwtService jwtService)
+    public class CompanyLoginQueryRequestHandler
+        : IRequestHandler<CompanyLoginQueryRequest, GeneralResponse<CompanyLoginQueryResponse>>
     {
-        _companyRepository = companyRepository;
-        _jwtService = jwtService;
-    }
+        private readonly ICompanyRepository _companyRepository;
+        private readonly JwtService _jwtService;
 
-    public async Task<GeneralResponse<CompanyLoginQueryResponse>> Handle(CompanyLoginQueryRequest request, CancellationToken cancellationToken)
-    {
-        var company = await _companyRepository.GetByEmailAsync(request.Email);
-        if (company == null)  return new GeneralResponse<CompanyLoginQueryResponse>(){Message = Messages.MessageConstants.InvalidUserData};
-        ;
-        if (company.Password != request.Password)
-            return new GeneralResponse<CompanyLoginQueryResponse>(){Message = Messages.MessageConstants.InvalidCompanyData};
-        var token =_jwtService.GenerateToken(company.Id.ToString(),"company");
-       
-
-        return new GeneralResponse<CompanyLoginQueryResponse>()
+        public CompanyLoginQueryRequestHandler(
+            ICompanyRepository companyRepository,
+            JwtService jwtService)
         {
-            Message = Messages.MessageConstants.CompanyLogin,
-            Data = new CompanyLoginQueryResponse
+            _companyRepository = companyRepository;
+            _jwtService = jwtService;
+        }
+
+        public async Task<GeneralResponse<CompanyLoginQueryResponse>> Handle(
+            CompanyLoginQueryRequest request,
+            CancellationToken cancellationToken)
+        {
+            // 1) Şirketi getir
+            var company = await _companyRepository.GetByEmailAsync(request.Email);
+            if (company is null)
             {
-                Token = token,
-                
-            },
-            isSuccess = true
-            
-        };
+                return new GeneralResponse<CompanyLoginQueryResponse>
+                {
+                    Message = Messages.MessageConstants.InvalidUserData,
+                    isSuccess = false
+                };
+            }
+
+            // 2) Parola doğrulama
+            // Eğer veritabanında HASHLI parola saklıyorsan:
+            // bool passOk = BCryptNet.Verify(request.Password, company.PasswordHash);
+            // Eğer düz metin (önerilmez) saklıyorsan:
+            bool passOk = company.Password == request.Password;
+
+            if (!passOk)
+            {
+                return new GeneralResponse<CompanyLoginQueryResponse>
+                {
+                    Message = Messages.MessageConstants.InvalidCompanyData,
+                    isSuccess = false
+                };
+            }
+
+            // 3) JWT üret
+            // Not: GenerateCompanyToken(userId, companyId) bekliyor.
+            // Elinde ayrıca bir UserId yoksa userId olarak company.Id kullanmak yeterli olur.
+            var companyId = company.Id.ToString();
+            var userId = company.Id.ToString(); // Eğer company.OwnerUserId varsa onu koy: company.OwnerUserId.ToString()
+
+            // 👉 JwtService'teki ayrı fonksiyonu kullanıyoruz:
+            var token = _jwtService.GenerateCompanyToken(userId, companyId);
+
+            // 4) Response
+            return new GeneralResponse<CompanyLoginQueryResponse>
+            {
+                Message = Messages.MessageConstants.CompanyLogin,
+                Data = new CompanyLoginQueryResponse
+                {
+                    Token = token
+                },
+                isSuccess = true
+            };
+        }
     }
 }

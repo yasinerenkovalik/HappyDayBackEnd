@@ -1,48 +1,73 @@
 using AutoMapper;
 using HappyDay.Application.Interface.Repository;
-
 using HappyDay.Application.Wrappers;
 using HappyDay.Persistance.Security;
 using MediatR;
 
-namespace HappyDay.Application.Features.Queries.AutLogin;
+// Eğer hash kullanıyorsan:
 
-public class AuthLoginQueryRequestHandler:IRequestHandler<AuthLoginQueryRequest, GeneralResponse<AuthLoginQueryResponse>>
+
+namespace HappyDay.Application.Features.Queries.AutLogin
 {
-
-    private readonly IMapper _mapper;
-    private readonly IUserRepository _userRepository;
-    private readonly JwtService  _jwtService;
- 
-
-    public AuthLoginQueryRequestHandler( IMapper mapper, IUserRepository userRepository, JwtService jwtService)
+    public class AuthLoginQueryRequestHandler
+        : IRequestHandler<AuthLoginQueryRequest, GeneralResponse<AuthLoginQueryResponse>>
     {
-        _mapper = mapper;
-        _userRepository = userRepository;
-        _jwtService = jwtService;
-    }
+        private readonly IMapper _mapper;
+        private readonly IUserRepository _userRepository;
+        private readonly JwtService _jwtService;
 
-    public async Task<GeneralResponse<AuthLoginQueryResponse>> Handle(AuthLoginQueryRequest request, CancellationToken cancellationToken)
-    {
-
-        var user = await _userRepository.GetByEmailAsync(request.Email);
-        if (user == null)  return new GeneralResponse<AuthLoginQueryResponse>(){Message = Messages.MessageConstants.InvalidUserData};
-        ;
-        if (user.Password != request.Password)
-            return new GeneralResponse<AuthLoginQueryResponse>(){Message = Messages.MessageConstants.InvalidUserData};
-        var token =_jwtService.GenerateToken(user.Id.ToString(),"user");
-       
-
-        return new GeneralResponse<AuthLoginQueryResponse>()
+        public AuthLoginQueryRequestHandler(
+            IMapper mapper,
+            IUserRepository userRepository,
+            JwtService jwtService)
         {
-            Message = Messages.MessageConstants.UserLogin,
-            Data = new AuthLoginQueryResponse
+            _mapper = mapper;
+            _userRepository = userRepository;
+            _jwtService = jwtService;
+        }
+
+        public async Task<GeneralResponse<AuthLoginQueryResponse>> Handle(
+            AuthLoginQueryRequest request,
+            CancellationToken cancellationToken)
+        {
+            var user = await _userRepository.GetByEmailAsync(request.Email);
+            if (user is null)
             {
-                Token = token,
-                
-            },
-            isSuccess = true
-            
-        };
+                return new GeneralResponse<AuthLoginQueryResponse>
+                {
+                    Message = Messages.MessageConstants.InvalidUserData,
+                    isSuccess = false
+                };
+            }
+
+            // Parola doğrulama
+            // Hash'li saklıyorsanız:
+            // var passOk = BCryptNet.Verify(request.Password, user.PasswordHash);
+            // Düz metin ise (önerilmez):
+            var passOk = user.Password == request.Password;
+
+            if (!passOk)
+            {
+                return new GeneralResponse<AuthLoginQueryResponse>
+                {
+                    Message = Messages.MessageConstants.InvalidUserData,
+                    isSuccess = false
+                };
+            }
+
+            // Rolünüz farklı bir yerde tutuluyorsa (user.Role gibi) onu da ekleyebilirsiniz.
+            // Burada standart "User" rolü ile token üretiyoruz.
+            var token = _jwtService.GenerateUserToken(user.Id.ToString());
+
+            return new GeneralResponse<AuthLoginQueryResponse>
+            {
+                Message = Messages.MessageConstants.UserLogin,
+                Data = new AuthLoginQueryResponse
+                {
+                    Token = token
+                },
+                isSuccess = true
+            };
+        }
     }
 }
