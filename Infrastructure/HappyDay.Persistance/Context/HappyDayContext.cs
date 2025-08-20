@@ -5,9 +5,29 @@ namespace HappyDay.Persistance.Context;
 
 public class HappyDayContext : DbContext
 {
+    private readonly string _connectionString;
+
+    public HappyDayContext()
+    {
+        // Default connection string for development
+        _connectionString = "Host=127.0.0.1;Database=happydaydb;Username=postgres;Password=postgres;TrustServerCertificate=True;";
+    }
+
+    public HappyDayContext(string connectionString)
+    {
+        _connectionString = connectionString;
+    }
+
+    public HappyDayContext(DbContextOptions<HappyDayContext> options) : base(options)
+    {
+    }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("Server=localhost;Database=HappyDay;User Id=admin;Password=123123;TrustServerCertificate=True;");
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseNpgsql(_connectionString);
+        }
     }
 
     public DbSet<Company> Companies { get; set; }

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/HappyDay.Domain.csproj": {}
+    "/workspace/HappyDayBackEnd/Core/HappyDay.Domain/HappyDay.Domain.csproj": {}
   },
   "projects": {
-    "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/HappyDay.Domain.csproj": {
+    "/workspace/HappyDayBackEnd/Core/HappyDay.Domain/HappyDay.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/HappyDay.Domain.csproj",
+        "projectUniqueName": "/workspace/HappyDayBackEnd/Core/HappyDay.Domain/HappyDay.Domain.csproj",
         "projectName": "HappyDay.Domain",
-        "projectPath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/HappyDay.Domain.csproj",
-        "packagesPath": "/Users/yasinerenkovalik/.nuget/packages/",
-        "outputPath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/",
+        "projectPath": "/workspace/HappyDayBackEnd/Core/HappyDay.Domain/HappyDay.Domain.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/workspace/HappyDayBackEnd/Core/HappyDay.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/yasinerenkovalik/.nuget/NuGet/NuGet.Config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,13 +32,7 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -84,22 +78,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.18, 8.0.18]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.18, 8.0.18]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.119/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

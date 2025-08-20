@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/HappyDay.Api.csproj": {}
+    "/workspace/HappyDayBackEnd/Presentation/HappyDay.Api/HappyDay.Api.csproj": {}
   },
   "projects": {
-    "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/HappyDay.Application.csproj": {
+    "/workspace/HappyDayBackEnd/Core/HappyDay.Application/HappyDay.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/HappyDay.Application.csproj",
+        "projectUniqueName": "/workspace/HappyDayBackEnd/Core/HappyDay.Application/HappyDay.Application.csproj",
         "projectName": "HappyDay.Application",
-        "projectPath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/HappyDay.Application.csproj",
-        "packagesPath": "/Users/yasinerenkovalik/.nuget/packages/",
-        "outputPath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/obj/",
+        "projectPath": "/workspace/HappyDayBackEnd/Core/HappyDay.Application/HappyDay.Application.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/workspace/HappyDayBackEnd/Core/HappyDay.Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/yasinerenkovalik/.nuget/NuGet/NuGet.Config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -26,8 +26,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/HappyDay.Domain.csproj": {
-                "projectPath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/HappyDay.Domain.csproj"
+              "/workspace/HappyDayBackEnd/Core/HappyDay.Domain/HappyDay.Domain.csproj": {
+                "projectPath": "/workspace/HappyDayBackEnd/Core/HappyDay.Domain/HappyDay.Domain.csproj"
               }
             }
           }
@@ -36,13 +36,7 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -88,36 +82,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.18, 8.0.18]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.18, 8.0.18]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.119/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/HappyDay.Domain.csproj": {
+    "/workspace/HappyDayBackEnd/Core/HappyDay.Domain/HappyDay.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/HappyDay.Domain.csproj",
+        "projectUniqueName": "/workspace/HappyDayBackEnd/Core/HappyDay.Domain/HappyDay.Domain.csproj",
         "projectName": "HappyDay.Domain",
-        "projectPath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/HappyDay.Domain.csproj",
-        "packagesPath": "/Users/yasinerenkovalik/.nuget/packages/",
-        "outputPath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Domain/obj/",
+        "projectPath": "/workspace/HappyDayBackEnd/Core/HappyDay.Domain/HappyDay.Domain.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/workspace/HappyDayBackEnd/Core/HappyDay.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/yasinerenkovalik/.nuget/NuGet/NuGet.Config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -135,13 +119,7 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -187,36 +165,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.18, 8.0.18]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.18, 8.0.18]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.119/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/yasinerenkovalik/RiderProjects/HappyDay/Infrastructure/HappyDay.Persistance/HappyDay.Persistance.csproj": {
+    "/workspace/HappyDayBackEnd/Infrastructure/HappyDay.Persistance/HappyDay.Persistance.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Infrastructure/HappyDay.Persistance/HappyDay.Persistance.csproj",
+        "projectUniqueName": "/workspace/HappyDayBackEnd/Infrastructure/HappyDay.Persistance/HappyDay.Persistance.csproj",
         "projectName": "HappyDay.Persistance",
-        "projectPath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Infrastructure/HappyDay.Persistance/HappyDay.Persistance.csproj",
-        "packagesPath": "/Users/yasinerenkovalik/.nuget/packages/",
-        "outputPath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Infrastructure/HappyDay.Persistance/obj/",
+        "projectPath": "/workspace/HappyDayBackEnd/Infrastructure/HappyDay.Persistance/HappyDay.Persistance.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/workspace/HappyDayBackEnd/Infrastructure/HappyDay.Persistance/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/yasinerenkovalik/.nuget/NuGet/NuGet.Config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -228,8 +196,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/HappyDay.Application.csproj": {
-                "projectPath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/HappyDay.Application.csproj"
+              "/workspace/HappyDayBackEnd/Core/HappyDay.Application/HappyDay.Application.csproj": {
+                "projectPath": "/workspace/HappyDayBackEnd/Core/HappyDay.Application/HappyDay.Application.csproj"
               }
             }
           }
@@ -238,13 +206,7 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -296,36 +258,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.18, 8.0.18]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.18, 8.0.18]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.119/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/HappyDay.Api.csproj": {
+    "/workspace/HappyDayBackEnd/Presentation/HappyDay.Api/HappyDay.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/HappyDay.Api.csproj",
+        "projectUniqueName": "/workspace/HappyDayBackEnd/Presentation/HappyDay.Api/HappyDay.Api.csproj",
         "projectName": "HappyDay.Api",
-        "projectPath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/HappyDay.Api.csproj",
-        "packagesPath": "/Users/yasinerenkovalik/.nuget/packages/",
-        "outputPath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Presentation/HappyDay.Api/obj/",
+        "projectPath": "/workspace/HappyDayBackEnd/Presentation/HappyDay.Api/HappyDay.Api.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/workspace/HappyDayBackEnd/Presentation/HappyDay.Api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/yasinerenkovalik/.nuget/NuGet/NuGet.Config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -337,11 +289,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/HappyDay.Application.csproj": {
-                "projectPath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Core/HappyDay.Application/HappyDay.Application.csproj"
+              "/workspace/HappyDayBackEnd/Core/HappyDay.Application/HappyDay.Application.csproj": {
+                "projectPath": "/workspace/HappyDayBackEnd/Core/HappyDay.Application/HappyDay.Application.csproj"
               },
-              "/Users/yasinerenkovalik/RiderProjects/HappyDay/Infrastructure/HappyDay.Persistance/HappyDay.Persistance.csproj": {
-                "projectPath": "/Users/yasinerenkovalik/RiderProjects/HappyDay/Infrastructure/HappyDay.Persistance/HappyDay.Persistance.csproj"
+              "/workspace/HappyDayBackEnd/Infrastructure/HappyDay.Persistance/HappyDay.Persistance.csproj": {
+                "projectPath": "/workspace/HappyDayBackEnd/Infrastructure/HappyDay.Persistance/HappyDay.Persistance.csproj"
               }
             }
           }
@@ -350,13 +302,7 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -388,7 +334,13 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.8, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -396,7 +348,7 @@
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -414,20 +366,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.18, 8.0.18]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.osx-arm64",
-              "version": "[8.0.18, 8.0.18]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.18, 8.0.18]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -436,7 +374,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.119/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
