@@ -656,10 +656,7 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.0"
         },
         "runtime": {
-          "HappyDay.Application.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "HappyDay.Application.dll": {}
         }
       },
       "HappyDay.Domain/1.0.0": {
@@ -673,10 +670,7 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.0"
         },
         "runtime": {
-          "HappyDay.Domain.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "HappyDay.Domain.dll": {}
         }
       }
     }
