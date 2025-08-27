@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HappyDay.Persistance")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34a358cf278a72185c748722989574ed961cf7c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3fbe6482478ea4189e46bcc613059f697c1570d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("HappyDay.Persistance")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HappyDay.Persistance")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
