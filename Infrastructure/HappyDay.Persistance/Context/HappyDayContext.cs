@@ -5,6 +5,7 @@ namespace HappyDay.Persistance.Context;
 
 public class HappyDayContext : DbContext
 {
+    public HappyDayContext(DbContextOptions<HappyDayContext> options) : base(options) { }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseNpgsql("Host=aws-1-eu-north-1.pooler.supabase.com;Port=5432;Database=postgres;Username=postgres.bfnmewijysyhexybnkcn;Password=Eren1.2345;Ssl Mode=Require;Trust Server Certificate=true");

@@ -1,11 +1,11 @@
 using System.Text;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using HappyDay.Api.Extension;
 using HappyDay.Application;
 using HappyDay.Application.Validations.Company;
 using HappyDay.Persistance;
 using HappyDay.Persistance.Context;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
@@ -13,29 +13,31 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 {
     Args = args,
     WebRootPath = "wwwroot"
-    // To configure URLs programmatically, you can use:
-    // ,Urls = { "http://0.0.0.0:80", "https://0.0.0.0:443" }
-    // Note: Port 80 and 443 require elevated privileges on most systems
-    // For development, consider using higher ports like:
-    // ,Urls = { "http://0.0.0.0:8080", "https://0.0.0.0:8081" }
 });
 
-// Add services to the container
-builder.Services.AddControllers().AddFluentValidation(conf =>
-    conf.RegisterValidatorsFromAssemblyContaining<CompanyCreateValidator>());
+// ---------------- Services ----------------
+builder.Services.AddControllers();
+
+// FluentValidation (önerilen kullanım)
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<CompanyCreateValidator>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configure DbContext with connection string from configuration
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
-                       ?? "Host=localhost;Database=HappyDayDB;Username=postgres;Password=postgres;TrustServerCertificate=True;";
+// DbContext (conn string appsettings.json → ConnectionStrings:DefaultConnection)
+var connectionString =
+    builder.Configuration.GetConnectionString("DefaultConnection");
+   
+
 builder.Services.AddDbContext<HappyDayContext>(options =>
     options.UseNpgsql(connectionString));
 
+// Katman servisleri
 builder.Services.AddPersistanceLayerServices();
 builder.Services.AddAplicationLayerServices();
 
+// CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -44,9 +46,9 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader());
 });
 
-// ✅ AUTHENTICATION ve AUTHORIZATION yapılandırması burada olmalı
-builder.Services.AddAuthentication("Bearer")
-    .AddJwtBearer("Bearer", options =>
+// Auth (JWT)
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {
@@ -54,34 +56,35 @@ builder.Services.AddAuthentication("Bearer")
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
+
             ValidIssuer = "yourdomain.com",
             ValidAudience = "yourdomain.com",
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("BuCokGizliVeUzunBirSecretKeyOlsun1234"))
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes("BuCokGizliVeUzunBirSecretKeyOlsun1234"))
         };
     });
 
 builder.Services.AddAuthorization();
 
-// ✅ builder.Build en sonda çağrılmalı
+// ---------------- Pipeline ----------------
 var app = builder.Build();
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<HappyDayContext>();
-    db.Database.Migrate();
-}
+
+
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "HappyDay API v1");
-    c.RoutePrefix = "swagger"; // Swagger UI /swagger altında çalışır
+    c.RoutePrefix = "swagger";
 });
 
+// Not: Sertifika yoksa container’da HTTPS yönlendirmeyi geçici kapatabilirsin.
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 app.UseCors("AllowAll");
 
-app.UseAuthentication(); // önce authentication
-app.UseAuthorization();  // sonra authorization
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

@@ -1,6 +1,0 @@
-﻿services:
-  happyday.api:
-    image: happyday.api
-    build:
-      context: .
-      dockerfile: Presentation/HappyDay.Api/Dockerfile
