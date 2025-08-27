@@ -7,7 +7,7 @@ public class HappyDayContext : DbContext
 {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("Server=localhost;Database=HappyDay;User Id=admin;Password=123123;TrustServerCertificate=True;");
+        optionsBuilder.UseNpgsql("Host=aws-1-eu-north-1.pooler.supabase.com;Port=5432;Database=postgres;Username=postgres.bfnmewijysyhexybnkcn;Password=Eren1.2345;Ssl Mode=Require;Trust Server Certificate=true");
     }
 
     public DbSet<Company> Companies { get; set; }
@@ -22,6 +22,11 @@ public class HappyDayContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Reservation>()
+            .HasOne(r => r.Organization)
+            .WithMany(o => o.Reservations)
+            .HasForeignKey(r => r.OrganizationId)
+            .OnDelete(DeleteBehavior.Restrict); 
 
         // Organization -> City
         modelBuilder.Entity<Organization>()

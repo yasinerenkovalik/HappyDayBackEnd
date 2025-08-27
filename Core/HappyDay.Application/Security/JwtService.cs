@@ -53,7 +53,7 @@ public class JwtService
         var claims = new List<Claim>
         {
             new(ClaimTypes.NameIdentifier, userId),
-            new(ClaimTypes.Role, "User"),
+            new(ClaimTypes.Role, "Admin"),
             new("CompanyId", userId)   
         };
         return BuildToken(claims);

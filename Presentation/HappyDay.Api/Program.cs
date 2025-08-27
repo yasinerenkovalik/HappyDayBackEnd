@@ -6,6 +6,7 @@ using HappyDay.Application;
 using HappyDay.Application.Validations.Company;
 using HappyDay.Persistance;
 using HappyDay.Persistance.Context;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(new WebApplicationOptions
@@ -53,13 +54,17 @@ builder.Services.AddAuthorization();
 
 // ✅ builder.Build en sonda çağrılmalı
 var app = builder.Build();
-
-// Middleware'leri sırayla ekle
-if (app.Environment.IsDevelopment())
+using (var scope = app.Services.CreateScope())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    var db = scope.ServiceProvider.GetRequiredService<HappyDayContext>();
+    db.Database.Migrate();
 }
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "HappyDay API v1");
+    c.RoutePrefix = "swagger"; // Swagger UI /swagger altında çalışır
+});
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

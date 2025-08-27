@@ -23,7 +23,8 @@ public class GetByCompanyQueryRequestHandler:IRequestHandler<GetByCompanyQueryRe
         var mappedResponse = _mapper.Map<List<GetByCompanyQueryResponse>>(response);
         return new GeneralResponse<List<GetByCompanyQueryResponse>>()
         {
-            Data = mappedResponse
+            Data = mappedResponse,
+            isSuccess = true
         };
     }
 }
