@@ -65,6 +65,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddAuthorization();
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Limits.MinRequestBodyDataRate = null; // hız limiti kapatılır
+});
 
 // ---------------- Pipeline ----------------
 var app = builder.Build();

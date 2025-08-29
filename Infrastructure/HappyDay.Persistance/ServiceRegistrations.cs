@@ -17,6 +17,7 @@ public static class ServiceRegistrations
         services.AddScoped<IOrganizationImagesRepository, OrganizationImagesRepository>();
         services.AddScoped<ICityesRepository, CityesRepository>();
         services.AddScoped<IDistrictRepository, DistrictRepository>();
+        services.AddScoped<IContactMessageRepository, ContactMessageRepository>();
         
        
         return services;

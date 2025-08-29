@@ -39,7 +39,7 @@ namespace HappyDay.Application.Features.Commands.Company.UpdateCompany
                 };
             }
 
-            // 2) Mevcut şirketi tracked olarak çek
+     
             var existing = await _repository.GetByIdAsync(request.Id);
             if (existing is null)
             {
@@ -49,7 +49,7 @@ namespace HappyDay.Application.Features.Commands.Company.UpdateCompany
                 };
             }
 
-            // 3) Yeni instance oluşturma! Var olan tracked entity’nin ÜZERİNE map et
+            
             _mapper.Map(request, existing);
 
             // 4) Repository’yi değiştirmeden UpdateAsync ile kaydet
@@ -57,9 +57,9 @@ namespace HappyDay.Application.Features.Commands.Company.UpdateCompany
 
             return new GeneralResponse<UpdateCompanyCommandResponse>
             {
-                Message = MessageConstants.CompanyUpdated
-                // İstersen:
-                // Data = new UpdateCompanyCommandResponse { Id = existing.Id }
+                Message = MessageConstants.CompanyUpdated,
+                isSuccess = true
+              
             };
         }
     }
