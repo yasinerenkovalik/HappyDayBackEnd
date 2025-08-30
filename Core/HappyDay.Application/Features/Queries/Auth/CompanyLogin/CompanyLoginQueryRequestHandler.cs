@@ -36,11 +36,7 @@ namespace HappyDay.Application.Features.Queries.Auth.OrganizationLogin
                     isSuccess = false
                 };
             }
-
-            // 2) Parola doğrulama
-            // Eğer veritabanında HASHLI parola saklıyorsan:
-            // bool passOk = BCryptNet.Verify(request.Password, company.PasswordHash);
-            // Eğer düz metin (önerilmez) saklıyorsan:
+            
             bool passOk = company.Password == request.Password;
 
             if (!passOk)
@@ -52,16 +48,12 @@ namespace HappyDay.Application.Features.Queries.Auth.OrganizationLogin
                 };
             }
 
-            // 3) JWT üret
-            // Not: GenerateCompanyToken(userId, companyId) bekliyor.
-            // Elinde ayrıca bir UserId yoksa userId olarak company.Id kullanmak yeterli olur.
+           
             var companyId = company.Id.ToString();
-            var userId = company.Id.ToString(); // Eğer company.OwnerUserId varsa onu koy: company.OwnerUserId.ToString()
-
-            // 👉 JwtService'teki ayrı fonksiyonu kullanıyoruz:
+            var userId = company.Id.ToString(); 
+        
             var token = _jwtService.GenerateCompanyToken(userId, companyId);
-
-            // 4) Response
+            
             return new GeneralResponse<CompanyLoginQueryResponse>
             {
                 Message = Messages.MessageConstants.CompanyLogin,

@@ -39,11 +39,7 @@ namespace HappyDay.Application.Features.Queries.AutLogin
                     isSuccess = false
                 };
             }
-
-            // Parola doğrulama
-            // Hash'li saklıyorsanız:
-            // var passOk = BCryptNet.Verify(request.Password, user.PasswordHash);
-            // Düz metin ise (önerilmez):
+            
             var passOk = user.Password == request.Password;
 
             if (!passOk)
@@ -54,9 +50,7 @@ namespace HappyDay.Application.Features.Queries.AutLogin
                     isSuccess = false
                 };
             }
-
-            // Rolünüz farklı bir yerde tutuluyorsa (user.Role gibi) onu da ekleyebilirsiniz.
-            // Burada standart "User" rolü ile token üretiyoruz.
+            
             var token = _jwtService.GenerateUserToken(user.Id.ToString());
 
             return new GeneralResponse<AuthLoginQueryResponse>

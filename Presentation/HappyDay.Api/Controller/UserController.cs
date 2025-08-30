@@ -5,11 +5,9 @@ using HappyDay.Application.Features.Commands.User.CreateUser;
 using HappyDay.Application.Features.Queries.AutLogin;
 using HappyDay.Application.Features.Queries.User.GetAllUser;
 using HappyDay.Application.Features.Queries.User.GetByIdUser;
-using HappyDay.Application.Interface.Repository;
 using HappyDay.Application.Wrappers;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
@@ -35,18 +33,21 @@ namespace HappyDay.Api.Controller
            return await _mediator.Send(request);
             
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost("create")]
         public async Task<GeneralResponse<CreateUserCommandResponse>>  Create(CreateUserCommandRequest request)
         {
             return await _mediator.Send(request);
             
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet("getall")]
         public async Task<GeneralResponse<List<GetAllUserQueryResponse>>>  GetAll( )
         {
             return await _mediator.Send(new  GetAllUserQueryRequest());
             
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost("getbyid")]
         public async Task<GeneralResponse<GetByIdUserQueryResponse>>  Getbyid(GetByIdUserQueryRequest request)
         {

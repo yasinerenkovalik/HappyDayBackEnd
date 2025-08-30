@@ -10,6 +10,7 @@ using HappyDay.Application.Features.Queries.Organization.GetFilterOrganization;
 using HappyDay.Application.Features.Queries.Organization.GetOrganizationWithImages;
 using HappyDay.Application.Wrappers;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol.Plugins;
@@ -25,6 +26,7 @@ namespace HappyDay.Api.Controller
         {
             _mediator = mediator;
         }
+        [Authorize(Roles = "Admin,Company")]
         [HttpPost("AddOrganization")]
         public async Task<GeneralResponse<CreateOrganizationCommandResponse>> AddOrganization([FromForm] CreateOrganizationCommandRequest request)
         {
@@ -55,6 +57,7 @@ namespace HappyDay.Api.Controller
             
             return await _mediator.Send(new GetByCompanyQueryRequest() { CompanyId = Id });
         }
+        [Authorize(Roles = "Admin,Company")]
         [HttpPut("OrganizationUpdate")]
         public async Task<GeneralResponse<UpdateOrganizationCommandResponse>> OrganizationUpdate([FromForm] UpdateOrganizationCommandRequest request)
         {
@@ -67,6 +70,7 @@ namespace HappyDay.Api.Controller
             return await _mediator.Send(query);
             
         }
+        [Authorize(Roles = "Admin,Company")]
         [HttpPost("GetFeatured")]
         public async Task<GeneralResponse<List<GetFeaturedQueryResponse>>> GetFeatured( GetFeaturedQueryRequest query)
         {

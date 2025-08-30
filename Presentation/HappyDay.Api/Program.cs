@@ -45,6 +45,16 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod()
               .AllowAnyHeader());
 });
+builder.Services.AddAuthorization(options =>
+{
+    
+    options.AddPolicy("AdminOnly", policy =>
+        policy.RequireRole("Admin"));
+
+    // hem Admin hem Manager girebilir
+    options.AddPolicy("CanCompany", policy =>
+        policy.RequireRole("Admin", "Company"));
+});
 
 // Auth (JWT)
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -64,13 +74,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-builder.Services.AddAuthorization();
+
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.Limits.MinRequestBodyDataRate = null; // hız limiti kapatılır
+    options.Limits.MinRequestBodyDataRate = null;
 });
 
-// ---------------- Pipeline ----------------
+
 var app = builder.Build();
 
 

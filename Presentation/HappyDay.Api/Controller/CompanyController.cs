@@ -7,6 +7,7 @@ using HappyDay.Application.Features.Queries.Company.GetAllCompany;
 using HappyDay.Application.Features.Queries.Company.GetByIdCompany;
 using HappyDay.Application.Wrappers;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,18 +23,21 @@ namespace HappyDay.Api.Controller
         {
             _mediator = mediator;
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost("add")]
         public async Task<GeneralResponse<CreateCompanyCommandResponse>> AddCompany([FromForm] CreateCompanyCommandRequest request)
         {
             return await _mediator.Send(request);
         }
+        
+        [Authorize(Roles = "Admin,Company")]
         [HttpPut("update")]
         public async Task<IActionResult> Update([FromBody] UpdateCompanyCommandRequest request)
         {
             var res = await _mediator.Send(request);
             return Ok(res);
         }
-
+        [Authorize(Roles = "Admin,Company")]
         [HttpDelete("delete")]
         public async Task<GeneralResponse<DeleteCompanyCommandResponse>> DeleteCompany([FromForm] DeleteCompanyCommandRequest request)
         {
@@ -43,12 +47,13 @@ namespace HappyDay.Api.Controller
         public async Task<GeneralResponse<CompanyLoginQueryResponse>> LoginCompany( CompanyLoginQueryRequest request)
         {
             return await _mediator.Send(request);
-        }
+        }[Authorize(Roles = "Admin")]
         [HttpGet("getbyid")]
         public async Task<GeneralResponse<GetByIdCompanyQueryResponse>> GetByIdCompany([FromQuery] GetByIdCompanyQueryRequest request)
         {
             return await _mediator.Send(request);
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet("CompanyGetAll")]
         public async Task<GeneralResponse<List<GetAllCompanyQueryResponse>>> CompanyGetAll()
         {
