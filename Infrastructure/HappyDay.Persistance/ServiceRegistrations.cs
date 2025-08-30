@@ -1,4 +1,5 @@
 
+using HappyDay.Application.Features.Invitations;
 using HappyDay.Application.Interface.Repository;
 using HappyDay.Persistance.Context;
 using HappyDay.Persistance.Repositories;
@@ -18,6 +19,9 @@ public static class ServiceRegistrations
         services.AddScoped<ICityesRepository, CityesRepository>();
         services.AddScoped<IDistrictRepository, DistrictRepository>();
         services.AddScoped<IContactMessageRepository, ContactMessageRepository>();
+        services.AddScoped<ICompanyInvitationService, CompanyInvitationService>();
+        services.AddScoped<ICompanyInvitationRepository, CompanyInvitationRepository>();
+
         
        
         return services;

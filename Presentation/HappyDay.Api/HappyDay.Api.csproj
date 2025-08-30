@@ -29,4 +29,11 @@
       <ProjectReference Include="..\..\Infrastructure\HappyDay.Persistance\HappyDay.Persistance.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Areas\InvateController\Controllers\" />
+      <Folder Include="Areas\InvateController\Data\" />
+      <Folder Include="Areas\InvateController\Models\" />
+      <Folder Include="Areas\InvateController\Views\" />
+    </ItemGroup>
+
 </Project>

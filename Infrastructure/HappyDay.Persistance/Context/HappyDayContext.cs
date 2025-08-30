@@ -20,6 +20,7 @@ public class HappyDayContext : DbContext
     public DbSet<City> Cities { get; set; }
     public DbSet<District> Districts { get; set; }
     public DbSet<ContactMessage> ContactMessages { get; set; }
+    public DbSet<CompanyInvitation> CompanyInvitations { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -29,6 +30,14 @@ public class HappyDayContext : DbContext
             .WithMany(o => o.Reservations)
             .HasForeignKey(r => r.OrganizationId)
             .OnDelete(DeleteBehavior.Restrict); 
+        modelBuilder.Entity<CompanyInvitation>(b =>
+        {
+            b.HasKey(x => x.Id);
+            b.HasIndex(x => x.TokenHash).IsUnique(); // Token tekil olsun
+            b.Property(x => x.TokenHash).IsRequired().HasMaxLength(128);
+            b.Property(x => x.Email).HasMaxLength(320);
+            b.Property(x => x.CompanyNameHint).HasMaxLength(200);
+        });
 
         // Organization -> City
         modelBuilder.Entity<Organization>()
