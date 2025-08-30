@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../build/HappyDay.Api.props" />
-</Project>
