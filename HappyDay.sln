@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F40EEF63-4D3F-4638-AC6B-1D8583A2C6C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{4BEE96A5-7A4C-43E1-8430-C85D6C0D5893}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{DE8BCEB2-DFBC-4454-B6BF-CF788ADCFD93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyDay.Domain", "Core\HappyDay.Domain\HappyDay.Domain.csproj", "{990458A5-DB3C-4F2B-9A25-76DC0FE1C91A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyDay.Application", "Core\HappyDay.Application\HappyDay.Application.csproj", "{4B46C395-740D-46E3-B19A-8F1D2D2E7DBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyDay.Infrastructure", "Infrastructure\HappyDay.Infrastructure\HappyDay.Infrastructure.csproj", "{4B239BC6-D08E-4098-A7AC-474529B33D17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyDay.Persistance", "Infrastructure\HappyDay.Persistance\HappyDay.Persistance.csproj", "{481936F9-D84C-431E-BBAE-AC15AC29098F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyDay.Api", "Presentation\HappyDay.Api\HappyDay.Api.csproj", "{AA36D203-90EA-47F4-B4E5-DE221E07C86A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{990458A5-DB3C-4F2B-9A25-76DC0FE1C91A} = {F40EEF63-4D3F-4638-AC6B-1D8583A2C6C5}
+		{4B46C395-740D-46E3-B19A-8F1D2D2E7DBB} = {F40EEF63-4D3F-4638-AC6B-1D8583A2C6C5}
+		{4B239BC6-D08E-4098-A7AC-474529B33D17} = {4BEE96A5-7A4C-43E1-8430-C85D6C0D5893}
+		{481936F9-D84C-431E-BBAE-AC15AC29098F} = {4BEE96A5-7A4C-43E1-8430-C85D6C0D5893}
+		{AA36D203-90EA-47F4-B4E5-DE221E07C86A} = {DE8BCEB2-DFBC-4454-B6BF-CF788ADCFD93}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{990458A5-DB3C-4F2B-9A25-76DC0FE1C91A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{990458A5-DB3C-4F2B-9A25-76DC0FE1C91A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{990458A5-DB3C-4F2B-9A25-76DC0FE1C91A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{990458A5-DB3C-4F2B-9A25-76DC0FE1C91A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B46C395-740D-46E3-B19A-8F1D2D2E7DBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B46C395-740D-46E3-B19A-8F1D2D2E7DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B46C395-740D-46E3-B19A-8F1D2D2E7DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B46C395-740D-46E3-B19A-8F1D2D2E7DBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B239BC6-D08E-4098-A7AC-474529B33D17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B239BC6-D08E-4098-A7AC-474529B33D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B239BC6-D08E-4098-A7AC-474529B33D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B239BC6-D08E-4098-A7AC-474529B33D17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{481936F9-D84C-431E-BBAE-AC15AC29098F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{481936F9-D84C-431E-BBAE-AC15AC29098F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{481936F9-D84C-431E-BBAE-AC15AC29098F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{481936F9-D84C-431E-BBAE-AC15AC29098F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA36D203-90EA-47F4-B4E5-DE221E07C86A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA36D203-90EA-47F4-B4E5-DE221E07C86A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA36D203-90EA-47F4-B4E5-DE221E07C86A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA36D203-90EA-47F4-B4E5-DE221E07C86A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

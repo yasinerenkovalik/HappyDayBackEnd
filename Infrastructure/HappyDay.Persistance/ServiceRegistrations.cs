@@ -1,0 +1,29 @@
+
+using HappyDay.Application.Features.Invitations;
+using HappyDay.Application.Interface.Repository;
+using HappyDay.Persistance.Context;
+using HappyDay.Persistance.Repositories;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace HappyDay.Persistance;
+
+public static class ServiceRegistrations
+{
+    public static IServiceCollection AddPersistanceLayerServices(this IServiceCollection services)
+    {
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+        services.AddScoped<ICompanyRepository, CompanyRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IOrganizationImagesRepository, OrganizationImagesRepository>();
+        services.AddScoped<ICityesRepository, CityesRepository>();
+        services.AddScoped<IDistrictRepository, DistrictRepository>();
+        services.AddScoped<IContactMessageRepository, ContactMessageRepository>();
+        services.AddScoped<ICompanyInvitationService, CompanyInvitationService>();
+        services.AddScoped<ICompanyInvitationRepository, CompanyInvitationRepository>();
+
+        
+       
+        return services;
+    }
+}

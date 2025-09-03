@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Rider/IDEA
+.idea/
+
+# .NET build çıktıları
+**/bin/
+**/obj/
+
+# Kullanıcı yüklemeleri (varsa)
+Presentation/HappyDay.Api/wwwroot/uploads/
