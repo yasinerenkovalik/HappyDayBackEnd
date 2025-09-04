@@ -71,18 +71,19 @@ namespace HappyDay.Api.Controller
             return await _mediator.Send(query);
             
         }
-        [Authorize(Roles = "Admin,Company")]
+     //   [Authorize(Roles = "Admin,Company")]
         [HttpPost("GetFeatured")]
         public async Task<GeneralResponse<List<GetFeaturedQueryResponse>>> GetFeatured( GetFeaturedQueryRequest query)
         {
             return await _mediator.Send(query);
         }
-        [Authorize(Roles = "Admin,Company")]
-        [HttpDelete("DeleteOrganization")]
-        public async Task<GeneralResponse<DeleteOrganizationCommandResponse>> GetFeatured( DeleteOrganizationCommandRequest query)
-        {
-            return await _mediator.Send(query);
-        }
+       [Authorize(Roles = "Admin,Company")]
+     [HttpDelete("DeleteOrganization")]
+     public async Task<GeneralResponse<DeleteOrganizationCommandResponse>> DeleteOrganization([FromBody] DeleteOrganizationCommandRequest query)
+     {
+         return await _mediator.Send(query);
+     }
+
 
     }
 }

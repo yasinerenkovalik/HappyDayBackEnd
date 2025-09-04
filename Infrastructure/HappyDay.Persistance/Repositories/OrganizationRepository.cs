@@ -20,7 +20,7 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
     public async Task<GetOrganizationWithImagesResponse> GetOrganizationWithImages(Guid Id)
     {
         var result = await _context.Organizations
-            .Where(o => o.Id == Id)
+            .Where(o => o.Id == Id && o.IsActivated==true)
             .Select(o => new GetOrganizationWithImagesResponse
             {
                 Id = o.Id,
@@ -56,7 +56,7 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
 
     public async Task<List<Organization>> GetByCompany(Guid companyId)
     {
-        return await _context.Organizations.Where(o => o.CompanyId == companyId).ToListAsync();
+        return await _context.Organizations.Where(o => o.CompanyId == companyId && o.IsActivated==true).ToListAsync();
     }
 
     public async Task<List<Organization>> GetFilteredAsync(GetFilteredOrganizationsQueryRequest  request)
