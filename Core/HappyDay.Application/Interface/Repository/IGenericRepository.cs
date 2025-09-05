@@ -9,4 +9,5 @@ public interface IGenericRepository<T> where T : BaseEntity
     Task<T> AddAsync(T entity);
     Task<T> UpdateAsync(T entity);
     Task<T> DeleteAsync(Guid id);
+    Task<PagedResult<T>> GetPagedAsync(int pageNumber, int pageSize, CancellationToken cancellationToken);
 }

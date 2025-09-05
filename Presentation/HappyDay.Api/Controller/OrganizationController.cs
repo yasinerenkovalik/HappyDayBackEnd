@@ -40,12 +40,16 @@ namespace HappyDay.Api.Controller
             return await _mediator.Send(request);
         }
         [HttpGet("OrganizationGetAll")]
-        public async Task<GeneralResponse<List<GetAllOrganizationQueryResponse>>> OrganizationGetAll()
+        public async Task<GeneralResponse<PagedResult<GetAllOrganizationQueryResponse>>> OrganizationGetAll(
+            [FromQuery] int pageNumber = 1, 
+            [FromQuery] int pageSize = 10)
         {
-            
-            return await _mediator.Send(new GetAllOrganizationQueryRequest());
+            return await _mediator.Send(new GetAllOrganizationQueryRequest
+            {
+                PageNumber = pageNumber,
+                PageSize = pageSize
+            });
         }
-  
         [HttpGet("GetOrganizationWithImages")]
         public async Task<GeneralResponse<GetOrganizationWithImagesResponse>> GetOrganizationWithImages(Guid Id)
         {
@@ -79,7 +83,7 @@ namespace HappyDay.Api.Controller
         }
        [Authorize(Roles = "Admin,Company")]
      [HttpDelete("DeleteOrganization")]
-     public async Task<GeneralResponse<DeleteOrganizationCommandResponse>> DeleteOrganization([FromBody] DeleteOrganizationCommandRequest query)
+     public async Task<GeneralResponse<DeleteOrganizationCommandResponse>> DeleteOrganization([FromForm] DeleteOrganizationCommandRequest query)
      {
          return await _mediator.Send(query);
      }

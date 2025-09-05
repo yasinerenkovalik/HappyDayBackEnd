@@ -11,6 +11,7 @@ public interface IOrganizationRepository:IGenericRepository<Organization>
     Task<List<Organization>> GetFeaturedAsync(GetFeaturedQueryRequest request);
     Task<GetOrganizationWithImagesResponse> GetOrganizationWithImages(Guid Id);
     Task<List<Organization>> GetByCompany(Guid companyId);
+    
     Task<List<Organization>> GetFilteredAsync(
         GetFilteredOrganizationsQueryRequest request);
    

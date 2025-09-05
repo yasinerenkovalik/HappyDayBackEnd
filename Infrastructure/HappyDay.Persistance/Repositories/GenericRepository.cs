@@ -43,6 +43,24 @@ public class GenericRepository<T>:IGenericRepository<T> where T:BaseEntity
         return entity;
     }
 
+    public async Task<PagedResult<T>> GetPagedAsync(int pageNumber, int pageSize, CancellationToken cancellationToken)
+    {
+        var query = _appContext.Set<T>().AsQueryable().Where(x=>x.IsActivated==true);
+
+        var totalCount = await query.CountAsync(cancellationToken);
+        var items = await query
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync(cancellationToken);
+
+        return new PagedResult<T>
+        {
+            Items = items,
+            TotalCount = totalCount,
+            PageNumber = pageNumber,
+            PageSize = pageSize
+        };
+    }
 
 
     public async Task<List<T>> GetAllAysnc()

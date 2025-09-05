@@ -64,6 +64,7 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
         var query = _context.Organizations
             .Include(x => x.City)
             .Include(x => x.District)
+            .Where(x=>x.IsActivated==true)
             .AsQueryable();
 
         if (request.CityId.HasValue)
