@@ -21,6 +21,7 @@ public class HappyDayContext : DbContext
     public DbSet<District> Districts { get; set; }
     public DbSet<ContactMessage> ContactMessages { get; set; }
     public DbSet<CompanyInvitation> CompanyInvitations { get; set; }
+    public DbSet<Contact> Contacts { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -11,7 +11,7 @@ namespace HappyDay.Api.Controller
         public IActionResult GetOrganizationWithICompany()
         {
             MailService mailService = new MailService();
-            mailService.SendAsync("erenkovalik42@gmail.com", "deneme ", "deneme");
+            mailService.SendAsync("erenkovalik42@gmail.com", "test 1232131231 ", "deneme");
 
             return Ok("deneme başarılı");
         }

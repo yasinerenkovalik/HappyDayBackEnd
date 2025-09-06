@@ -1,4 +1,5 @@
 using HappyDay.Application.Features.Commands.ContactMessage.CreateContactMessage;
+using HappyDay.Application.Features.Queries.ContactMessage.GetByCompanyContactMessage;
 using HappyDay.Application.Interface.Repository;
 using HappyDay.Application.Wrappers;
 using MediatR;
@@ -22,7 +23,13 @@ namespace HappyDay.Api.Controller
         [HttpPost("add")]
         public async Task<GeneralResponse<CreateContactMessageCommanResponse>> AddCompany([FromForm] CreateContactMessageCommanRequest request)
         {
-            Console.WriteLine(request);
+           
+            return await _mediator.Send(request);
+        }
+        [HttpPost("CompanyContactMessage")]
+        public async Task<GeneralResponse<List<GetByCompanyContactMessageResponse>>> CompanyContactMessage([FromForm] GetByCompanyContactMessageRequest request)
+        {
+           
             return await _mediator.Send(request);
         }
     }
