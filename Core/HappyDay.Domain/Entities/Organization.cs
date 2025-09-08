@@ -20,7 +20,7 @@ public class Organization:BaseEntity
     public bool IsOutdoor { get; set; }
     public string ReservationNote { get; set; }
     public string CancelPolicy { get; set; }
-    public string VideoUrl { get; set; }
+    public string? VideoUrl { get; set; }
     public bool IsFeatured { get; set; } 
     
     public Guid CompanyId { get; set; }

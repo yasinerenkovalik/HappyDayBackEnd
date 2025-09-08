@@ -22,6 +22,7 @@ public static class ApplicationLayerService
         services.AddValidatorsFromAssembly(currentAssembly);
         services.AddScoped<JwtService>();
         services.AddScoped<IFileService, FileService>();
+        services.AddTransient<MailService>();
 
         return services;
     }

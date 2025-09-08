@@ -69,6 +69,8 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
 
         if (request.CityId.HasValue)
             query = query.Where(x => x.CityId == request.CityId);
+        if (request.DistrictId.HasValue)
+            query = query.Where(x => x.DistrictId == request.DistrictId);
 
         if (request.DistrictId.HasValue)
             query = query.Where(x => x.DistrictId == request.DistrictId);
