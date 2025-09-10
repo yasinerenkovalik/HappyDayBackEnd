@@ -278,7 +278,6 @@ namespace HappyDay.Persistance.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("CancelPolicy")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("CategoryId")
@@ -326,7 +325,6 @@ namespace HappyDay.Persistance.Migrations
                         .HasColumnType("numeric");
 
                     b.Property<string>("ReservationNote")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<List<string>>("Services")
@@ -341,7 +339,6 @@ namespace HappyDay.Persistance.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("VideoUrl")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
