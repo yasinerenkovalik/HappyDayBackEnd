@@ -16,8 +16,8 @@ public class CreateOrganizationCommandRequest:IRequest<GeneralResponse<CreateOrg
     public List<string> Services { get; set; } = new();
     public string Duration { get; set; }
     public bool IsOutdoor { get; set; }
-    public string ReservationNote { get; set; }
-    public string CancelPolicy { get; set; }
+    public string? ReservationNote { get; set; }
+    public string? CancelPolicy { get; set; }
     public string? VideoUrl { get; set; }
     public int CityId { get; set; }
   

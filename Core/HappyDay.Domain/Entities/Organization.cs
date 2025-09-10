@@ -18,8 +18,8 @@ public class Organization:BaseEntity
     public List<string> Services { get; set; } = new();
     public string Duration { get; set; }
     public bool IsOutdoor { get; set; }
-    public string ReservationNote { get; set; }
-    public string CancelPolicy { get; set; }
+    public string? ReservationNote { get; set; }
+    public string? CancelPolicy { get; set; }
     public string? VideoUrl { get; set; }
     public bool IsFeatured { get; set; } 
     
