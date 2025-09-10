@@ -85,7 +85,8 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
                 CityId = x.CityId,
                 CityName = x.City.CityName,
                 DistrictId = x.DistrictId,
-                DistrictName = x.District.DistrictName
+                DistrictName = x.District.DistrictName,
+                CoverPhotoPath = x.CoverPhotoPath,
             })
             .ToListAsync();
     }

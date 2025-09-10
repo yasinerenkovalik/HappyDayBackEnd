@@ -20,8 +20,12 @@ public class GetFilteredOrganizationsQueryRequestHandler:IRequestHandler<GetFilt
     {
         var organizations = await _repository.GetFilteredAsync(
            request);
+        Console.WriteLine();
+        
         
         var response = _mapper.Map<List<GetFilteredOrganizationsQueryResponse>>(organizations);
+        
+        
 
         return new GeneralResponse<List<GetFilteredOrganizationsQueryResponse>>()
         {
