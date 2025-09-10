@@ -24,7 +24,7 @@ public class DeleteOrganizationCommandRequestHandler:IRequestHandler<DeleteOrgan
        await _repository.DeleteAsync(request.Id);
         return new GeneralResponse<DeleteOrganizationCommandResponse>
         {
-            Message = Messages.MessageConstants.InvalidOrganizationData,
+            
             isSuccess = true
         };
     }

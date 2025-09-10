@@ -20,7 +20,7 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
     public async Task<GetOrganizationWithImagesResponse> GetOrganizationWithImages(Guid Id)
     {
         var result = await _context.Organizations
-            .Where(o => o.Id == Id && o.IsActivated==true)
+            .Where(o => o.Id == Id && o.IsActivated == true)
             .Select(o => new GetOrganizationWithImagesResponse
             {
                 Id = o.Id,
@@ -29,7 +29,8 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
                 Price = o.Price,
                 MaxGuestCount = o.MaxGuestCount,
                 CategoryId = o.CategoryId,
-                CityId=o.CityId,
+                CityName = o.City.CityName, // 👈 City tablosundan Name alıyoruz
+                DistrictName = o.District.DistrictName, 
                 Latitude = o.Company.Latitude,
                 Longitude = o.Company.Longitude,
                 Images = o.OrganizationImages
@@ -39,7 +40,6 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
                         Id = img.Id,
                         ImageUrl = img.ImageUrl
                     }).ToList(),
-           
                 Duration = o.Duration,
                 Services = o.Services,
                 IsOutdoor = o.IsOutdoor,
@@ -52,6 +52,7 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
 
         return result;
     }
+
 
 
     public async Task<List<Organization>> GetByCompany(Guid companyId)

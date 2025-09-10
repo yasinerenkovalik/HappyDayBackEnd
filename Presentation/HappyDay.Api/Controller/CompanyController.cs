@@ -37,7 +37,7 @@ namespace HappyDay.Api.Controller
             var res = await _mediator.Send(request);
             return Ok(res);
         }
-        [Authorize(Roles = "Admin,Company")]
+     
         [HttpDelete("delete")]
         public async Task<GeneralResponse<DeleteCompanyCommandResponse>> DeleteCompany([FromForm] DeleteCompanyCommandRequest request)
         {

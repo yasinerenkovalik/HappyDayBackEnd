@@ -81,7 +81,7 @@ namespace HappyDay.Api.Controller
         {
             return await _mediator.Send(query);
         }
-       [Authorize(Roles = "Admin,Company")]
+
      [HttpDelete("DeleteOrganization")]
      public async Task<GeneralResponse<DeleteOrganizationCommandResponse>> DeleteOrganization([FromForm] DeleteOrganizationCommandRequest query)
      {
