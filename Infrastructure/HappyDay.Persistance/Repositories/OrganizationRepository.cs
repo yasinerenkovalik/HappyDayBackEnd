@@ -53,25 +53,16 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
         return result;
     }
 
-
-
-    public async Task<List<Organization>> GetByCompany(Guid companyId)
-    {
-        return await _context.Organizations.Where(o => o.CompanyId == companyId && o.IsActivated==true).ToListAsync();
-    }
-
-    public async Task<List<Organization>> GetFilteredAsync(GetFilteredOrganizationsQueryRequest  request)
+    public async Task<List<GetFilteredOrganizationsQueryResponse>> GetFilteredAsync(GetFilteredOrganizationsQueryRequest request)
     {
         var query = _context.Organizations
             .Include(x => x.City)
             .Include(x => x.District)
-            .Where(x=>x.IsActivated==true)
+            .Where(x => x.IsActivated == true)
             .AsQueryable();
 
         if (request.CityId.HasValue)
             query = query.Where(x => x.CityId == request.CityId);
-        if (request.DistrictId.HasValue)
-            query = query.Where(x => x.DistrictId == request.DistrictId);
 
         if (request.DistrictId.HasValue)
             query = query.Where(x => x.DistrictId == request.DistrictId);
@@ -85,8 +76,27 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
         if (request.MaxPrice.HasValue)
             query = query.Where(x => x.Price <= request.MaxPrice);
 
-        return await query.ToListAsync();
+        return await query
+            .Select(x => new GetFilteredOrganizationsQueryResponse
+            {
+                Id = x.Id,
+                Title = x.Title,
+                Price = x.Price,
+                CityId = x.CityId,
+                CityName = x.City.CityName,
+                DistrictId = x.DistrictId,
+                DistrictName = x.District.DistrictName
+            })
+            .ToListAsync();
     }
+
+
+    public async Task<List<Organization>> GetByCompany(Guid companyId)
+    {
+        return await _context.Organizations.Where(o => o.CompanyId == companyId && o.IsActivated==true).ToListAsync();
+    }
+
+   
     public async Task<List<Organization>> GetFeaturedAsync(GetFeaturedQueryRequest  request)
     {
         return await _context.Organizations

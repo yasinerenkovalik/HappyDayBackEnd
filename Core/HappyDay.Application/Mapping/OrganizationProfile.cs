@@ -11,18 +11,30 @@ using HappyDay.Domain.Entities;
 
 namespace HappyDay.Application.Mapping;
 
-public class OrganizationProfile: Profile
+public class OrganizationProfile : Profile
 {
     public OrganizationProfile()
     {
-    
         CreateMap<Organization, CreateOrganizationCommandRequest>().ReverseMap();
         CreateMap<Organization, GetByIdOrganizationQueryResponse>().ReverseMap();
-        CreateMap<Organization, GetAllOrganizationQueryResponse>().ReverseMap();
+
+        // 🔥 GetAllOrganization için City/District mapping
+        CreateMap<Organization, GetAllOrganizationQueryResponse>()
+            .ForMember(dest => dest.CityName,
+                opt => opt.MapFrom(src => src.City != null ? src.City.CityName : string.Empty))
+            .ForMember(dest => dest.DistrictName,
+                opt => opt.MapFrom(src => src.District != null ? src.District.DistrictName : string.Empty));
+
         CreateMap<Organization, GetByCompanyQueryResponse>().ReverseMap();
         CreateMap<Organization, UpdateOrganizationCommandRequest>().ReverseMap();
-        CreateMap<Organization, GetFilteredOrganizationsQueryResponse>().ReverseMap();
+
+        // 🔥 Filter için de ekleyelim
+        CreateMap<Organization, GetFilteredOrganizationsQueryResponse>()
+            .ForMember(dest => dest.CityName,
+                opt => opt.MapFrom(src => src.City != null ? src.City.CityName : string.Empty))
+            .ForMember(dest => dest.DistrictName,
+                opt => opt.MapFrom(src => src.District != null ? src.District.DistrictName : string.Empty));
+
         CreateMap<Organization, GetFeaturedQueryResponse>().ReverseMap();
-       
     }
 }

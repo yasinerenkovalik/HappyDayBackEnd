@@ -12,7 +12,7 @@ public interface IOrganizationRepository:IGenericRepository<Organization>
     Task<GetOrganizationWithImagesResponse> GetOrganizationWithImages(Guid Id);
     Task<List<Organization>> GetByCompany(Guid companyId);
     
-    Task<List<Organization>> GetFilteredAsync(
+    Task<List<GetFilteredOrganizationsQueryResponse>> GetFilteredAsync(
         GetFilteredOrganizationsQueryRequest request);
    
 

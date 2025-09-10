@@ -16,4 +16,8 @@ public class GetFilteredOrganizationsQueryResponse
     public string? CoverPhotoPath { get; set; }
     public Guid CompanyId { get; set; }
     public Guid Id { get; set; }
+    public int CityId { get; set; }
+    public string CityName { get; set; }
+    public int DistrictId { get; set; }
+    public string DistrictName { get; set; }
 }
