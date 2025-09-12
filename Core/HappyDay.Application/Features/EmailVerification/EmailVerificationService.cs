@@ -50,7 +50,7 @@ namespace HappyDay.Application.Features.EmailVerification
             await _tokens.AddAsync(entity);
 
             // 4) link
-            var frontBase = _cfg["Frontend:BaseUrl"] ?? "http://localhost:3000/auth/confirm-email";
+            var frontBase = _cfg["Frontend:BaseUrl"] ?? "http://mutlugunum.com.tr/auth/confirm-email";
             var link = $"{frontBase}/auth/confirm-email?cid={companyId}&token={plainToken}";
 
             // 5) mail
