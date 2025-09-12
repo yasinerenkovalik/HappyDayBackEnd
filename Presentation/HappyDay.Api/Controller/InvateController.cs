@@ -3,8 +3,11 @@ using System;
 using System.Security.Claims;
 
 using HappyDay.Application.Features.Invitations;
+using HappyDay.Application.Features.Invitations.RegisterByInvite;
 using HappyDay.Application.Interface.Repository;
+using HappyDay.Application.Wrappers;
 using HappyDay.Domain.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -47,16 +50,18 @@ namespace HappyDay.Api.Controllers
     {
         private readonly ICompanyInvitationService _invitationService;
         private readonly ICompanyRepository _companyRepository;          // projendeki firma repository’n
-                          
+        private readonly IMediator _mediator;
+
 
         public CompanyAuthController(
             ICompanyInvitationService invitationService,
-            ICompanyRepository companyRepository
+            ICompanyRepository companyRepository,
+            IMediator  mediator
             )
         {
             _invitationService = invitationService;
             _companyRepository = companyRepository;
-         
+            _mediator = mediator;
         }
 
         public class CompanyRegisterRequest
@@ -74,37 +79,9 @@ namespace HappyDay.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost("register-by-invite")]
-        public async Task<IActionResult> RegisterByInvite([FromBody] CompanyRegisterRequest req, CancellationToken ct)
-        {
-         
-            var v = await _invitationService.ValidateAsync(req.Token, ct);
-            if (!v.IsValid)
-                return BadRequest(new { message = v.Reason ?? "Token geçersiz." });
-
-            try
-            {
-                // 2) Company oluştur (örnek alanlar)
-                var company = new Company
-                {
-                    Id = Guid.NewGuid(),
-                    Email = req.Email,
-                    Name  = req.CompanyName,
-                    Adress= req.Adress,
-                    PhoneNumber = req.PhoneNumber,
-                    Description = req.Description,
-                    PasswordHash = req.Password,
-                    CreateDate    = DateTime.UtcNow
-                };
-
-                await _companyRepository.AddAsync(company);
-
-                await _invitationService.ConsumeAsync(req.Token, company.Id, ct);
-                return Ok(new { message = "Kayıt başarılı.", companyId = company.Id });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
-        }
+        public async Task<GeneralResponse<RegisterByInviteResponse>> RegisterByInvite(
+            [FromBody] RegisterByInviteCommand req, CancellationToken ct)
+            => await _mediator.Send(req, ct);
+       
     }
 }
