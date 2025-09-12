@@ -1,7 +1,7 @@
 using System.Text;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-
+using HappyDay.Api.Services.Mail;
 using HappyDay.Application;
 using HappyDay.Application.Common.Security;
 using HappyDay.Application.Validations.Company;
@@ -24,8 +24,16 @@ builder.Services.AddControllers();
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<CompanyCreateValidator>();
 
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<
+    HappyDay.Application.Common.Email.IEmailSender,
+    HappyDay.Api.Services.Mail.MailService
+>(); 
+// Program.cs
+builder.Services.Configure<SmtpOptions>(builder.Configuration.GetSection("Smtp"));
+
 
 // DbContext
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

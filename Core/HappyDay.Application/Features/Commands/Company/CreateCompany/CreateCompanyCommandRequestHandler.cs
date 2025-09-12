@@ -1,6 +1,7 @@
 using AutoMapper;
 using FluentValidation;
-using HappyDay.Application.Common.Security; // IPasswordHasher
+using HappyDay.Application.Common.Security;
+using HappyDay.Application.Features.EmailVerification; // IPasswordHasher
 using HappyDay.Application.Interface.Repository;
 using HappyDay.Application.Wrappers;
 using MediatR;
@@ -14,17 +15,19 @@ public class CreateCompanyCommandRequestHandler
     private readonly IMapper _mapper;
     private readonly IValidator<CreateCompanyCommandRequest> _validator;
     private readonly IPasswordHasher _passwordHasher;
+    private readonly IEmailVerificationService _emailVerificationService;
 
     public CreateCompanyCommandRequestHandler(
         ICompanyRepository repository,
         IMapper mapper,
         IValidator<CreateCompanyCommandRequest> validator,
-        IPasswordHasher passwordHasher)
+        IPasswordHasher passwordHasher, IEmailVerificationService emailVerificationService)
     {
         _repository = repository;
         _mapper = mapper;
         _validator = validator;
         _passwordHasher = passwordHasher;
+        _emailVerificationService = emailVerificationService;
     }
 
     public async Task<GeneralResponse<CreateCompanyCommandResponse>> Handle(
@@ -64,6 +67,7 @@ public class CreateCompanyCommandRequestHandler
 
         // 4) Kaydet
         await _repository.AddAsync(company);
+        await _emailVerificationService.GenerateAndSendAsync(company.Id, company.Email, cancellationToken);
 
         return new GeneralResponse<CreateCompanyCommandResponse>
         {

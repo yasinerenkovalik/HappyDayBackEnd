@@ -1,7 +1,12 @@
 
+using HappyDay.Api.Services.Mail;
+using HappyDay.Application.Features.EmailVerification;
 using HappyDay.Application.Features.Invitations;
 using HappyDay.Application.Interface.Repository;
+using HappyDay.Domain.Entities;
 using HappyDay.Persistance.Repositories;
+using AppEmail = HappyDay.Application.Common.Email.IEmailSender; 
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace HappyDay.Persistance;
@@ -21,6 +26,14 @@ public static class ServiceRegistrations
         services.AddScoped<ICompanyInvitationService, CompanyInvitationService>();
         services.AddScoped<ICompanyInvitationRepository, CompanyInvitationRepository>();
         services.AddScoped<IContactRepository, ContactRepository>();
+    
+    
+
+// Repositories
+        services.AddScoped<IEmailVerificationTokenRepository, EmailVerificationTokenRepository>();
+
+// Services
+        services.AddScoped<IEmailVerificationService, EmailVerificationService>();
 
         
        

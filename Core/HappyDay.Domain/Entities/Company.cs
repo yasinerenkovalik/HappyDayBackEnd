@@ -16,4 +16,6 @@ public class Company:BaseEntity
     
     public ICollection<Organization> Organizations { get; set; }
     public bool IsApproved { get; set; } // Company
+    public bool IsEmailConfirmed { get; set; } = false;
+    public DateTime? EmailConfirmedAt { get; set; }
 }

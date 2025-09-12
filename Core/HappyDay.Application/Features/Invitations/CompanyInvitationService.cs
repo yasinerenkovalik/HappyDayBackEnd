@@ -35,6 +35,7 @@ namespace HappyDay.Application.Features.Invitations
                 CompanyNameHint  = req.CompanyNameHint,
                 ExpiresAt        = req.ExpiresAt,
                 CreateDate        = DateTime.UtcNow,
+                
               
             };
             

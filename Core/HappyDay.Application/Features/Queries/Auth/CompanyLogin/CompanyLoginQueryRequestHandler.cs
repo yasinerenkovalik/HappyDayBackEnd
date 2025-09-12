@@ -88,7 +88,7 @@ public class CompanyLoginQueryRequestHandler
         return new GeneralResponse<CompanyLoginQueryResponse>
         {
            
-            Data = new CompanyLoginQueryResponse { Token = token },
+            Data = new CompanyLoginQueryResponse { Token = token ,IsEmailConfirmed=company.IsEmailConfirmed},
             isSuccess = true
         };
 
