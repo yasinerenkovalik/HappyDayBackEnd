@@ -39,6 +39,7 @@ namespace HappyDay.Api.Controller
 
         // Giriş (email onayı yoksa handler uygun mesaj dönecek)
         [HttpPost("login")]
+        [Consumes("application/json")]
         public async Task<GeneralResponse<CompanyLoginQueryResponse>> LoginCompany([FromBody] CompanyLoginQueryRequest request)
         {
             return await _mediator.Send(request);
