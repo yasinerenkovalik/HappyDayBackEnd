@@ -17,7 +17,7 @@ namespace HappyDay.Api.Controller
         {
             _mediator = mediator;
         }
-        [HttpGet("OrganizationGetAll")]
+        [HttpGet("CategoryGetAll")]
         public async Task<GeneralResponse<List<GetAllCategoryQueryResponse>>> OrganizationGetAll()
         {
             return await _mediator.Send(new GetAllCategoryQueryRequest());

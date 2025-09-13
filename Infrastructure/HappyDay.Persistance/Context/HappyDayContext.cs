@@ -22,7 +22,9 @@ public class HappyDayContext : DbContext
     public DbSet<ContactMessage> ContactMessages { get; set; }
     public DbSet<CompanyInvitation> CompanyInvitations { get; set; }
     public DbSet<Contact> Contacts { get; set; }
-    public DbSet<EmailVerificationToken> EmailVerificationTokens { get; set; }
+    
+    public DbSet<PasswordResetToken> PasswordResetTokens { get; set; } = null!;
+    public DbSet<EmailVerificationToken> EmailVerificationTokens { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

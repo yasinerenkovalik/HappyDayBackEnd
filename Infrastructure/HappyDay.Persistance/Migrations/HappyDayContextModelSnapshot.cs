@@ -440,6 +440,36 @@ namespace HappyDay.Persistance.Migrations
                     b.ToTable("OrganizationImages");
                 });
 
+            modelBuilder.Entity("HappyDay.Domain.Entities.PasswordResetToken", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("ExpiresAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Purpose")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("TokenHash")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("UsedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("PasswordResetTokens");
+                });
+
             modelBuilder.Entity("HappyDay.Domain.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -598,6 +628,17 @@ namespace HappyDay.Persistance.Migrations
                         .IsRequired();
 
                     b.Navigation("Organization");
+                });
+
+            modelBuilder.Entity("HappyDay.Domain.Entities.PasswordResetToken", b =>
+                {
+                    b.HasOne("HappyDay.Domain.Entities.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("Reservation", b =>

@@ -1,6 +1,6 @@
 namespace HappyDay.Application.Wrappers;
 
-public class GeneralResponse<T> where T : class, new()
+public class GeneralResponse<T> where T : new()
 {
     
     

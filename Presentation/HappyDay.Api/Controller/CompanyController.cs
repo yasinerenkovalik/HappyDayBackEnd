@@ -8,6 +8,8 @@ using HappyDay.Application.Features.Commands.Company.UpdateCompany;
 // Email confirmation komutları
 using HappyDay.Application.Features.Commands.Auth.ConfirmEmail;
 using HappyDay.Application.Features.Commands.Auth.ResendConfirmation;
+using HappyDay.Application.Features.PasswordReset.RequestPasswordReset;
+using HappyDay.Application.Features.PasswordReset.ResetPassword;
 using HappyDay.Application.Features.Queries.Auth.OrganizationLogin;
 using HappyDay.Application.Features.Queries.Company.GetAllCompany;
 using HappyDay.Application.Features.Queries.Company.GetByIdCompany;
@@ -90,5 +92,16 @@ namespace HappyDay.Api.Controller
         {
             return await _mediator.Send(new GetAllCompanyQueryRequest());
         }
+        [AllowAnonymous]
+        [HttpPost("request-password-reset")]
+        public async Task<GeneralResponse<Unit>> RequestPasswordReset(
+            [FromBody] RequestPasswordResetCommand req, CancellationToken ct)
+            => await _mediator.Send(req, ct);
+
+        [AllowAnonymous]
+        [HttpPost("reset-password")]
+        public async Task<GeneralResponse<Unit>> ResetPassword(
+            [FromBody] ResetPasswordCommand req, CancellationToken ct)
+            => await _mediator.Send(req, ct);
     }
 }

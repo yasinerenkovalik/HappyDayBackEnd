@@ -2,6 +2,7 @@
 using HappyDay.Api.Services.Mail;
 using HappyDay.Application.Features.EmailVerification;
 using HappyDay.Application.Features.Invitations;
+using HappyDay.Application.Features.PasswordReset;
 using HappyDay.Application.Interface.Repository;
 using HappyDay.Domain.Entities;
 using HappyDay.Persistance.Repositories;
@@ -26,17 +27,11 @@ public static class ServiceRegistrations
         services.AddScoped<ICompanyInvitationService, CompanyInvitationService>();
         services.AddScoped<ICompanyInvitationRepository, CompanyInvitationRepository>();
         services.AddScoped<IContactRepository, ContactRepository>();
-    
-    
-
-// Repositories
+        services.AddScoped<IPasswordResetTokenRepository, PasswordResetTokenRepository>();
+        services.AddScoped<IPasswordResetService, PasswordResetService>();
         services.AddScoped<IEmailVerificationTokenRepository, EmailVerificationTokenRepository>();
-
-// Services
         services.AddScoped<IEmailVerificationService, EmailVerificationService>();
-
         
-       
         return services;
     }
 }
