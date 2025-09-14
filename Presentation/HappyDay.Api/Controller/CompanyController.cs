@@ -65,9 +65,9 @@ namespace HappyDay.Api.Controller
             return Ok(res);
         }
 
-        [Authorize(Roles = "Admin,Company")]
+       // [Authorize(Roles = "Admin,Company")]
         [HttpPut("update")]
-        public async Task<IActionResult> Update([FromBody] UpdateCompanyCommandRequest request)
+        public async Task<IActionResult> Update([FromForm] UpdateCompanyCommandRequest request)
         {
             var res = await _mediator.Send(request);
             return Ok(res);
@@ -79,7 +79,7 @@ namespace HappyDay.Api.Controller
             return await _mediator.Send(request);
         }
 
-        [Authorize(Roles = "Admin,Company")]
+      
         [HttpGet("getbyid")]
         public async Task<GeneralResponse<GetByIdCompanyQueryResponse>> GetByIdCompany([FromQuery] GetByIdCompanyQueryRequest request)
         {

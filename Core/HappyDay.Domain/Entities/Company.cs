@@ -18,4 +18,5 @@ public class Company:BaseEntity
     public bool IsApproved { get; set; } // Company
     public bool IsEmailConfirmed { get; set; } = false;
     public DateTime? EmailConfirmedAt { get; set; }
+    public string? CoverPhotoPath { get; set; }
 }

@@ -10,5 +10,7 @@ public class GetByCompanyQueryResponse
     public List<string> Services { get; set; } = new();
     public bool IsOutdoor { get; set; }
     public string? CoverPhotoPath { get; set; }
+    public decimal Price { get; set; }
+    public int MaxGuestCount { get; set; }
 
 }

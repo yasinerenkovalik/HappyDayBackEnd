@@ -115,6 +115,9 @@ namespace HappyDay.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("CoverPhotoPath")
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("timestamp with time zone");
 

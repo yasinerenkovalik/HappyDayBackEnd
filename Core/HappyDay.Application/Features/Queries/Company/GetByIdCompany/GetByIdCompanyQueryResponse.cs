@@ -10,4 +10,6 @@ public class GetByIdCompanyQueryResponse
     public string Description { get; set; }
     public decimal Latitude { get; set; }
     public decimal Longitude { get; set; }
+    public string? CoverPhotoPath { get; set; }
+   
 }

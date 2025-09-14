@@ -63,7 +63,7 @@ namespace HappyDay.Application.Features.PasswordReset
  
 
             // 4) link
-            var baseUrl = _cfg["Frontend:BaseUrl"] ?? "http://mulugunum.com";
+            var baseUrl = _cfg["Frontend:BaseUrl"] ?? "http://mutlugunum.com.tr";
             var link = $"{baseUrl}/auth/reset-password?cid={companyId}&token={plainToken}";
 
             // 5) mail

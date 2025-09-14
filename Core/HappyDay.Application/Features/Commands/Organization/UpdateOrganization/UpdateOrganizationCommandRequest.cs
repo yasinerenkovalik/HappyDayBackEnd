@@ -15,11 +15,11 @@ public class UpdateOrganizationCommandRequest:IRequest<GeneralResponse<UpdateOrg
     public int? CategoryId { get; set; }
     public int? CityId { get; set; }
     public List<string> Services { get; set; } = new();
-    public string Duration { get; set; }
+    public string? Duration { get; set; }
     public bool IsOutdoor { get; set; }
-    public string ReservationNote { get; set; }
-    public string CancelPolicy { get; set; }
-    public string VideoUrl { get; set; }
+    public string? ReservationNote { get; set; }
+    public string? CancelPolicy { get; set; }
+    public string? VideoUrl { get; set; }
     public IFormFile? CoverPhoto { get; set; }
 
 }

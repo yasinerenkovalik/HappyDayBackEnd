@@ -3,6 +3,7 @@ using FluentValidation;
 using HappyDay.Application.Common.Security;
 using HappyDay.Application.Features.EmailVerification; // IPasswordHasher
 using HappyDay.Application.Interface.Repository;
+using HappyDay.Application.Interface.Services;
 using HappyDay.Application.Wrappers;
 using MediatR;
 
@@ -16,18 +17,21 @@ public class CreateCompanyCommandRequestHandler
     private readonly IValidator<CreateCompanyCommandRequest> _validator;
     private readonly IPasswordHasher _passwordHasher;
     private readonly IEmailVerificationService _emailVerificationService;
+    private readonly IFileService _fileService;
 
     public CreateCompanyCommandRequestHandler(
         ICompanyRepository repository,
         IMapper mapper,
+        
         IValidator<CreateCompanyCommandRequest> validator,
-        IPasswordHasher passwordHasher, IEmailVerificationService emailVerificationService)
+        IPasswordHasher passwordHasher, IEmailVerificationService emailVerificationService, IFileService fileService)
     {
         _repository = repository;
         _mapper = mapper;
         _validator = validator;
         _passwordHasher = passwordHasher;
         _emailVerificationService = emailVerificationService;
+        _fileService = fileService;
     }
 
     public async Task<GeneralResponse<CreateCompanyCommandResponse>> Handle(
@@ -64,6 +68,11 @@ public class CreateCompanyCommandRequestHandler
         {
             company.PasswordHash = _passwordHasher.Hash(request.Password);
         }
+        var path = await _fileService.SaveFileAsync(request.CoverPhotoPath, "uploads/companycover");
+        var fullPath = Path.Combine("uploads/companycover", path);
+
+        // veritabanına tam yolu kaydet
+        company.CoverPhotoPath = fullPath.Replace("\\", "/");
 
         // 4) Kaydet
         await _repository.AddAsync(company);
