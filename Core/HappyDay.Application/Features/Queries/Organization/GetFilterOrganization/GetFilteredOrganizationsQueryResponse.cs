@@ -20,4 +20,5 @@ public class GetFilteredOrganizationsQueryResponse
     public string CityName { get; set; }
     public int DistrictId { get; set; }
     public string DistrictName { get; set; }
+    public int Page { get; set; }
 }

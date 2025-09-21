@@ -67,6 +67,7 @@ namespace HappyDay.Api.Controller
 
        // [Authorize(Roles = "Admin,Company")]
         [HttpPut("update")]
+        [Consumes("multipart/form-data")]
         public async Task<IActionResult> Update([FromForm] UpdateCompanyCommandRequest request)
         {
             var res = await _mediator.Send(request);

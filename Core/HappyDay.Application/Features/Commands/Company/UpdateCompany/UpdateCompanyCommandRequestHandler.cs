@@ -54,13 +54,14 @@ namespace HappyDay.Application.Features.Commands.Company.UpdateCompany
 
             
             _mapper.Map(request, existing);
+            if (request.CoverPhoto is not null)
+            {
+                var path = await _fileService.SaveFileAsync(request.CoverPhoto, "uploads/companycover");
+                var fullPath = Path.Combine("uploads/companycover", path);
 
-            // 4) Repository’yi değiştirmeden UpdateAsync ile kaydet
-            var path = await _fileService.SaveFileAsync(request.CoverPhoto, "uploads/companycover");
-            var fullPath = Path.Combine("uploads/companycover", path);
-
-            // veritabanına tam yolu kaydet
-            existing.CoverPhotoPath = fullPath.Replace("\\", "/");
+                // veritabanına tam yolu kaydet
+                existing.CoverPhotoPath = fullPath.Replace("\\", "/");
+            }
             await _repository.UpdateAsync(existing);
 
             return new GeneralResponse<UpdateCompanyCommandResponse>

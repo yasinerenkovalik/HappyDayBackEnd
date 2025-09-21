@@ -1,37 +1,28 @@
 using AutoMapper;
+using HappyDay.Application.Features.Queries.Organization.GetFilterOrganization;
 using HappyDay.Application.Interface.Repository;
 using HappyDay.Application.Wrappers;
 using MediatR;
 
-namespace HappyDay.Application.Features.Queries.Organization.GetFilterOrganization;
-
-public class GetFilteredOrganizationsQueryRequestHandler:IRequestHandler<GetFilteredOrganizationsQueryRequest, GeneralResponse<List<GetFilteredOrganizationsQueryResponse>>>
+public class GetFilteredOrganizationsQueryRequestHandler
+    : IRequestHandler<GetFilteredOrganizationsQueryRequest, GeneralResponse<PagedResult<GetFilteredOrganizationsQueryResponse>>>
 {
     private readonly IOrganizationRepository _repository;
-    private readonly IMapper _mapper;
 
     public GetFilteredOrganizationsQueryRequestHandler(IOrganizationRepository repository, IMapper mapper)
     {
         _repository = repository;
-        _mapper = mapper;
     }
 
-    public async Task<GeneralResponse<List<GetFilteredOrganizationsQueryResponse>>> Handle(GetFilteredOrganizationsQueryRequest request, CancellationToken cancellationToken)
+    public async Task<GeneralResponse<PagedResult<GetFilteredOrganizationsQueryResponse>>> Handle(
+        GetFilteredOrganizationsQueryRequest request, CancellationToken cancellationToken)
     {
-        var organizations = await _repository.GetFilteredAsync(
-           request);
-        Console.WriteLine();
-        
-        
-        var response = _mapper.Map<List<GetFilteredOrganizationsQueryResponse>>(organizations);
-        
-        
+        var paged = await _repository.GetFilteredAsync(request,cancellationToken);
 
-        return new GeneralResponse<List<GetFilteredOrganizationsQueryResponse>>()
+        return new GeneralResponse<PagedResult<GetFilteredOrganizationsQueryResponse>>
         {
-            Data = response
+            Data = paged,
+            isSuccess = true
         };
-
-
     }
 }

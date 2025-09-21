@@ -19,6 +19,7 @@ public class GetByIdCompanyQueryRequestHandler:IRequestHandler<GetByIdCompanyQue
     public async Task<GeneralResponse<GetByIdCompanyQueryResponse>> Handle(GetByIdCompanyQueryRequest request, CancellationToken cancellationToken)
     {
         var result= await _companyRepository.GetByIdAsync(request.Id);
+        Console.WriteLine(result);
         return new GeneralResponse<GetByIdCompanyQueryResponse>()
         {
             Data = _mapper.Map<GetByIdCompanyQueryResponse>(result),

@@ -53,12 +53,15 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
         return result;
     }
 
-    public async Task<List<GetFilteredOrganizationsQueryResponse>> GetFilteredAsync(GetFilteredOrganizationsQueryRequest request)
+    public async Task<PagedResult<GetFilteredOrganizationsQueryResponse>> GetFilteredAsync(
+        GetFilteredOrganizationsQueryRequest request,
+        CancellationToken ct)
     {
         var query = _context.Organizations
             .Include(x => x.City)
             .Include(x => x.District)
             .Where(x => x.IsActivated == true)
+            .AsNoTracking()
             .AsQueryable();
 
         if (request.CityId.HasValue)
@@ -76,7 +79,18 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
         if (request.MaxPrice.HasValue)
             query = query.Where(x => x.Price <= request.MaxPrice);
 
-        return await query
+        // 1) toplam kayıt
+        var totalCount = await query.CountAsync(ct);
+
+        // 2) sıralama (CreatedAt varsa onu kullan; yoksa Id/Title vb.)
+        query = query.OrderByDescending(x => x.CreateDate);
+
+        // 3) sayfalama
+        var skip = (request.Page - 1) * request.PageSize;
+
+        var items = await query
+            .Skip(skip)
+            .Take(request.PageSize)
             .Select(x => new GetFilteredOrganizationsQueryResponse
             {
                 Id = x.Id,
@@ -88,7 +102,15 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
                 DistrictName = x.District.DistrictName,
                 CoverPhotoPath = x.CoverPhotoPath,
             })
-            .ToListAsync();
+            .ToListAsync(ct);
+
+        return new PagedResult<GetFilteredOrganizationsQueryResponse>
+        {
+            Items = items,
+            TotalCount = totalCount,
+            Page = request.Page,
+            PageSize = request.PageSize
+        };
     }
 
 
