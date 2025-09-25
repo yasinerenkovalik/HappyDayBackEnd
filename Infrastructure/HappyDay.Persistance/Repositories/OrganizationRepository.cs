@@ -101,6 +101,8 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
                 DistrictId = x.Company.DistrictId,
                 DistrictName = x.Company.District.DistrictName,
                 CoverPhotoPath = x.CoverPhotoPath,
+                Longitude = x.Company.Longitude,
+                Latitude = x.Company.Latitude,
             })
             .ToListAsync(ct);
 

@@ -16,4 +16,6 @@ public class GetByIdOrganizationQueryResponse
     public Guid CompanyId { get; set; }
     public int? CategoryId { get; set; }
     public string? CoverPhotoPath { get; set; }
+    public decimal Latitude { get; set; }
+    public decimal Longitude { get; set; }
 }

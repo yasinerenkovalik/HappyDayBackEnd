@@ -21,4 +21,6 @@ public class GetFilteredOrganizationsQueryResponse
     public int DistrictId { get; set; }
     public string DistrictName { get; set; }
     public int Page { get; set; }
+    public decimal Latitude { get; set; }
+    public decimal Longitude { get; set; }
 }

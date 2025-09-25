@@ -13,4 +13,5 @@ public class GetByCompanyQueryResponse
     public decimal Price { get; set; }
     public int MaxGuestCount { get; set; }
 
+
 }
