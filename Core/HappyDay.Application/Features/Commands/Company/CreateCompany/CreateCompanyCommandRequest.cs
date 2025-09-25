@@ -15,5 +15,7 @@ public class CreateCompanyCommandRequest:IRequest<GeneralResponse<CreateCompanyC
     public string Description { get; set; }
     public decimal Latitude { get; set; }
     public decimal Longitude { get; set; }
+    public int CityId { get; set; }
+    public int DistrictId { get; set; }
     public IFormFile? CoverPhotoPath { get; set; }
 }

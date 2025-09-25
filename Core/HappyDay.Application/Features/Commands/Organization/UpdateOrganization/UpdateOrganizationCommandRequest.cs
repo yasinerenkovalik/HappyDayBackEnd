@@ -13,7 +13,7 @@ public class UpdateOrganizationCommandRequest:IRequest<GeneralResponse<UpdateOrg
     public decimal Price { get; set; }
     public int MaxGuestCount { get; set; }
     public int? CategoryId { get; set; }
-    public int? CityId { get; set; }
+ 
     public List<string> Services { get; set; } = new();
     public string? Duration { get; set; }
     public bool IsOutdoor { get; set; }

@@ -19,10 +19,7 @@ public class CreateOrganizationCommandRequest:IRequest<GeneralResponse<CreateOrg
     public string? ReservationNote { get; set; }
     public string? CancelPolicy { get; set; }
     public string? VideoUrl { get; set; }
-    public int CityId { get; set; }
-  
-
-    public int DistrictId { get; set; }
+    
     public IFormFile CoverPhoto { get; set; }
     public Guid CompanyId { get; set; }
     public List<IFormFile> Images { get; set; }
