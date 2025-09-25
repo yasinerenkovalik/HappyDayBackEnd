@@ -29,8 +29,8 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
                 Price = o.Price,
                 MaxGuestCount = o.MaxGuestCount,
                 CategoryId = o.CategoryId,
-                CityName = o.City.CityName, // 👈 City tablosundan Name alıyoruz
-                DistrictName = o.District.DistrictName, 
+                CityName = o.Company.City.CityName, // 👈 City tablosundan Name alıyoruz
+                DistrictName = o.Company.District.DistrictName, 
                 Latitude = o.Company.Latitude,
                 Longitude = o.Company.Longitude,
                 Images = o.OrganizationImages
@@ -58,17 +58,17 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
         CancellationToken ct)
     {
         var query = _context.Organizations
-            .Include(x => x.City)
-            .Include(x => x.District)
+            .Include(x => x.Company.City)
+            .Include(x => x.Company.District)
             .Where(x => x.IsActivated == true)
             .AsNoTracking()
             .AsQueryable();
 
         if (request.CityId.HasValue)
-            query = query.Where(x => x.CityId == request.CityId);
+            query = query.Where(x => x.Company.CityId == request.CityId);
 
         if (request.DistrictId.HasValue)
-            query = query.Where(x => x.DistrictId == request.DistrictId);
+            query = query.Where(x => x.Company.DistrictId == request.DistrictId);
 
         if (request.CategoryId.HasValue)
             query = query.Where(x => x.CategoryId == request.CategoryId);
@@ -96,10 +96,10 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
                 Id = x.Id,
                 Title = x.Title,
                 Price = x.Price,
-                CityId = x.CityId,
-                CityName = x.City.CityName,
-                DistrictId = x.DistrictId,
-                DistrictName = x.District.DistrictName,
+                CityId = x.Company.CityId,
+                CityName = x.Company.City.CityName,
+                DistrictId = x.Company.DistrictId,
+                DistrictName = x.Company.District.DistrictName,
                 CoverPhotoPath = x.CoverPhotoPath,
             })
             .ToListAsync(ct);

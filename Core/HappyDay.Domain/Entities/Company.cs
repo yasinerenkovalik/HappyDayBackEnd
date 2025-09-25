@@ -13,6 +13,11 @@ public class Company:BaseEntity
     public string Description { get; set; }
     public decimal Latitude { get; set; }
     public decimal Longitude { get; set; }
+    public int CityId { get; set; }
+    public City City { get; set; }
+
+    public int DistrictId { get; set; }
+    public District District { get; set; }
     
     public ICollection<Organization> Organizations { get; set; }
     public bool IsApproved { get; set; } // Company

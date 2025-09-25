@@ -115,6 +115,9 @@ namespace HappyDay.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("CityId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("CoverPhotoPath")
                         .HasColumnType("text");
 
@@ -127,6 +130,9 @@ namespace HappyDay.Persistance.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("DistrictId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -166,6 +172,10 @@ namespace HappyDay.Persistance.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("DistrictId");
 
                     b.ToTable("Companies");
                 });
@@ -338,7 +348,7 @@ namespace HappyDay.Persistance.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("CityId")
+                    b.Property<int?>("CityId")
                         .HasColumnType("integer");
 
                     b.Property<Guid>("CompanyId")
@@ -357,7 +367,7 @@ namespace HappyDay.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("DistrictId")
+                    b.Property<int?>("DistrictId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Duration")
@@ -578,6 +588,25 @@ namespace HappyDay.Persistance.Migrations
                     b.ToTable("Reservations");
                 });
 
+            modelBuilder.Entity("HappyDay.Domain.Entities.Company", b =>
+                {
+                    b.HasOne("HappyDay.Domain.Entities.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HappyDay.Domain.Entities.District", "District")
+                        .WithMany()
+                        .HasForeignKey("DistrictId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("City");
+
+                    b.Navigation("District");
+                });
+
             modelBuilder.Entity("HappyDay.Domain.Entities.District", b =>
                 {
                     b.HasOne("HappyDay.Domain.Entities.City", "City")
@@ -597,11 +626,9 @@ namespace HappyDay.Persistance.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HappyDay.Domain.Entities.City", "City")
+                    b.HasOne("HappyDay.Domain.Entities.City", null)
                         .WithMany("Organizations")
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("CityId");
 
                     b.HasOne("HappyDay.Domain.Entities.Company", "Company")
                         .WithMany("Organizations")
@@ -609,17 +636,11 @@ namespace HappyDay.Persistance.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HappyDay.Domain.Entities.District", "District")
+                    b.HasOne("HappyDay.Domain.Entities.District", null)
                         .WithMany("Organizations")
-                        .HasForeignKey("DistrictId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("City");
+                        .HasForeignKey("DistrictId");
 
                     b.Navigation("Company");
-
-                    b.Navigation("District");
                 });
 
             modelBuilder.Entity("HappyDay.Domain.Entities.OrganizationImage", b =>

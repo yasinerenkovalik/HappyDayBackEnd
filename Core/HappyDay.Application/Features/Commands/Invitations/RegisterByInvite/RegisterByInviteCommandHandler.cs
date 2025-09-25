@@ -58,6 +58,7 @@ public class RegisterByInviteCommandHandler
 
         // 3) Hashle
         var pwdHash = _hasher.Hash(req.Password);
+        Console.WriteLine(pwdHash);
 
         // 4) Company oluştur
         var company = new Company

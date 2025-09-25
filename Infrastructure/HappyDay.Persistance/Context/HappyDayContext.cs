@@ -44,18 +44,10 @@ public class HappyDayContext : DbContext
         });
 
         // Organization -> City
-        modelBuilder.Entity<Organization>()
-            .HasOne(o => o.City)
-            .WithMany(c => c.Organizations)
-            .HasForeignKey(o => o.CityId)
-            .OnDelete(DeleteBehavior.Restrict);
+    
 
         // Organization -> District
-        modelBuilder.Entity<Organization>()
-            .HasOne(o => o.District)
-            .WithMany(d => d.Organizations)
-            .HasForeignKey(o => o.DistrictId)
-            .OnDelete(DeleteBehavior.Restrict);
+  
 
         // District -> City
         modelBuilder.Entity<District>()

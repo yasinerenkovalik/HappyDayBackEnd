@@ -25,8 +25,9 @@ public class GetAllOrganizationQueryRequestHandler
             pageSize: request.PageSize,
             ct: cancellationToken,
             selector: q => q
-                .Include(o => o.City)
-                .Include(o => o.District)
+                .Include(o => o.Company.City)
+                .Include(o => o.Company.City)
+                
                 .Select(o => new GetAllOrganizationQueryResponse
                 {
                     Id = o.Id,
@@ -34,10 +35,10 @@ public class GetAllOrganizationQueryRequestHandler
                     Description = o.Description,
                     Price = o.Price,
                     MaxGuestCount = o.MaxGuestCount,
-                   
-                    CityName = o.City.CityName,
-                 
-                    DistrictName = o.District.DistrictName,
+                    CityId=o.Company.CityId,
+                    DistrictId = o.Company.DistrictId,
+                    Longitude = o.Company.Longitude,
+                    Latitude = o.Company.Latitude,
                     IsOutdoor = o.IsOutdoor,
                     Duration = o.Duration,
                     ReservationNote = o.ReservationNote,
@@ -45,7 +46,7 @@ public class GetAllOrganizationQueryRequestHandler
                     VideoUrl = o.VideoUrl,
                     CoverPhotoPath = o.CoverPhotoPath
                 }),
-            orderBy: q => q.OrderBy(o => o.Title)
+            orderBy: q => q.OrderBy(o => o.CreateDate)
         );
 
 
