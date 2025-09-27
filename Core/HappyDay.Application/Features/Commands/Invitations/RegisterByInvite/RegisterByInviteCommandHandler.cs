@@ -63,6 +63,8 @@ public class RegisterByInviteCommandHandler
         // 4) Company oluştur
         var company = new Company
         {
+            CityId = req.CityId,
+            DistrictId = req.DistrictId,
             Id               = Guid.NewGuid(),
             Email            = email,
             Name             = req.CompanyName,
