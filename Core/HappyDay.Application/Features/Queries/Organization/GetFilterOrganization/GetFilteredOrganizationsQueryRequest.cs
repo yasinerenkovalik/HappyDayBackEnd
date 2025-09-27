@@ -13,6 +13,7 @@ public class GetFilteredOrganizationsQueryRequest
     public int? CategoryId { get; set; }
     public bool? IsOutdoor { get; set; }
     public decimal? MaxPrice { get; set; }
+    public bool? SortByPriceAsc { get; set; }
 
     // pagination
     private const int MaxPageSize = 100;

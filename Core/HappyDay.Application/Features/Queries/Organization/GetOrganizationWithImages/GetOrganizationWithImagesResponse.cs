@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
 namespace HappyDay.Application.Features.Queries.Organization.GetOrganizationWithImages;
 
 public class GetOrganizationWithImagesResponse
@@ -7,6 +9,7 @@ public class GetOrganizationWithImagesResponse
     public string Description { get; set; }
     public decimal Price { get; set; }
     public int? CategoryId { get; set; }
+    public Guid CompanyId { get; set; }
     public int MaxGuestCount { get; set; }
     public string Location { get; set; }
     public List<string> Services { get; set; } = new();

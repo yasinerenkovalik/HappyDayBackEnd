@@ -29,6 +29,7 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
                 Price = o.Price,
                 MaxGuestCount = o.MaxGuestCount,
                 CategoryId = o.CategoryId,
+                CompanyId = o.CompanyId,
                 CityName = o.Company.City.CityName, // 👈 City tablosundan Name alıyoruz
                 DistrictName = o.Company.District.DistrictName, 
                 Latitude = o.Company.Latitude,
@@ -53,67 +54,78 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
         return result;
     }
 
-    public async Task<PagedResult<GetFilteredOrganizationsQueryResponse>> GetFilteredAsync(
-        GetFilteredOrganizationsQueryRequest request,
-        CancellationToken ct)
+  public async Task<PagedResult<GetFilteredOrganizationsQueryResponse>> GetFilteredAsync(
+    GetFilteredOrganizationsQueryRequest request,
+    CancellationToken ct)
+{
+    var query = _context.Organizations
+        .Include(x => x.Company.City)
+        .Include(x => x.Company.District)
+        .Where(x => x.IsActivated == true)
+        .AsNoTracking()
+        .AsQueryable();
+
+    if (request.CityId.HasValue)
+        query = query.Where(x => x.Company.CityId == request.CityId);
+
+    if (request.DistrictId.HasValue)
+        query = query.Where(x => x.Company.DistrictId == request.DistrictId);
+
+    if (request.CategoryId.HasValue)
+        query = query.Where(x => x.CategoryId == request.CategoryId);
+
+    if (request.IsOutdoor.HasValue)
+        query = query.Where(x => x.IsOutdoor == request.IsOutdoor);
+
+    if (request.MaxPrice.HasValue)
+        query = query.Where(x => x.Price <= request.MaxPrice);
+
+    // 1) toplam kayıt
+    var totalCount = await query.CountAsync(ct);
+
+    // 2) sıralama (fiyata göre veya default olarak tarihe göre)
+    if (request.SortByPriceAsc.HasValue)
     {
-        var query = _context.Organizations
-            .Include(x => x.Company.City)
-            .Include(x => x.Company.District)
-            .Where(x => x.IsActivated == true)
-            .AsNoTracking()
-            .AsQueryable();
-
-        if (request.CityId.HasValue)
-            query = query.Where(x => x.Company.CityId == request.CityId);
-
-        if (request.DistrictId.HasValue)
-            query = query.Where(x => x.Company.DistrictId == request.DistrictId);
-
-        if (request.CategoryId.HasValue)
-            query = query.Where(x => x.CategoryId == request.CategoryId);
-
-        if (request.IsOutdoor.HasValue)
-            query = query.Where(x => x.IsOutdoor == request.IsOutdoor);
-
-        if (request.MaxPrice.HasValue)
-            query = query.Where(x => x.Price <= request.MaxPrice);
-
-        // 1) toplam kayıt
-        var totalCount = await query.CountAsync(ct);
-
-        // 2) sıralama (CreatedAt varsa onu kullan; yoksa Id/Title vb.)
-        query = query.OrderByDescending(x => x.CreateDate);
-
-        // 3) sayfalama
-        var skip = (request.Page - 1) * request.PageSize;
-
-        var items = await query
-            .Skip(skip)
-            .Take(request.PageSize)
-            .Select(x => new GetFilteredOrganizationsQueryResponse
-            {
-                Id = x.Id,
-                Title = x.Title,
-                Price = x.Price,
-                CityId = x.Company.CityId,
-                CityName = x.Company.City.CityName,
-                DistrictId = x.Company.DistrictId,
-                DistrictName = x.Company.District.DistrictName,
-                CoverPhotoPath = x.CoverPhotoPath,
-                Longitude = x.Company.Longitude,
-                Latitude = x.Company.Latitude,
-            })
-            .ToListAsync(ct);
-
-        return new PagedResult<GetFilteredOrganizationsQueryResponse>
-        {
-            Items = items,
-            TotalCount = totalCount,
-            Page = request.Page,
-            PageSize = request.PageSize
-        };
+        if (request.SortByPriceAsc.Value)
+            query = query.OrderBy(x => x.Price);
+        else
+            query = query.OrderByDescending(x => x.Price);
     }
+    else
+    {
+        query = query.OrderByDescending(x => x.CreateDate);
+    }
+
+    // 3) sayfalama
+    var skip = (request.Page - 1) * request.PageSize;
+
+    var items = await query
+        .Skip(skip)
+        .Take(request.PageSize)
+        .Select(x => new GetFilteredOrganizationsQueryResponse
+        {
+            Id = x.Id,
+            Title = x.Title,
+            Price = x.Price,
+            CityId = x.Company.CityId,
+            CityName = x.Company.City.CityName,
+            DistrictId = x.Company.DistrictId,
+            DistrictName = x.Company.District.DistrictName,
+            CoverPhotoPath = x.CoverPhotoPath,
+            Longitude = x.Company.Longitude,
+            Latitude = x.Company.Latitude,
+        })
+        .ToListAsync(ct);
+
+    return new PagedResult<GetFilteredOrganizationsQueryResponse>
+    {
+        Items = items,
+        TotalCount = totalCount,
+        Page = request.Page,
+        PageSize = request.PageSize
+    };
+}
+
 
 
     public async Task<List<Organization>> GetByCompany(Guid companyId)
