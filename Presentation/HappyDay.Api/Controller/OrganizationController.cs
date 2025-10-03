@@ -1,8 +1,6 @@
-using AutoMapper;
 using HappyDay.Application.Features.Commands.Organization.CreateOrganization;
 using HappyDay.Application.Features.Commands.Organization.DeleteOrganization;
 using HappyDay.Application.Features.Commands.Organization.UpdateOrganization;
-using HappyDay.Application.Features.Queries.Company.GetByIdCompany;
 using HappyDay.Application.Features.Queries.Organization.GetAllOrganization;
 using HappyDay.Application.Features.Queries.Organization.GetByCompany;
 using HappyDay.Application.Features.Queries.Organization.GetByIdOrganization;
@@ -12,9 +10,7 @@ using HappyDay.Application.Features.Queries.Organization.GetOrganizationWithImag
 using HappyDay.Application.Wrappers;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NuGet.Protocol.Plugins;
 
 namespace HappyDay.Api.Controller
 {

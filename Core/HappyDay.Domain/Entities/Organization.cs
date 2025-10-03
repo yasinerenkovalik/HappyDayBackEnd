@@ -24,6 +24,7 @@ public class Organization:BaseEntity
     public string? CoverPhotoPath { get; set; }
     public ICollection<Reservation> Reservations { get; set; }
     public ICollection<OrganizationImage> OrganizationImages { get; set; }
+    public ICollection<Package> Packages { get; set; } = new List<Package>();
 
 
 }

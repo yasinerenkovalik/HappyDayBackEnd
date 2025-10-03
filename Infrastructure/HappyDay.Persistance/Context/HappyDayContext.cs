@@ -1,4 +1,5 @@
 using HappyDay.Domain.Entities;
+using HappyDay.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HappyDay.Persistance.Context;
@@ -22,6 +23,8 @@ public class HappyDayContext : DbContext
     public DbSet<ContactMessage> ContactMessages { get; set; }
     public DbSet<CompanyInvitation> CompanyInvitations { get; set; }
     public DbSet<Contact> Contacts { get; set; }
+    public DbSet<Package> Packages { get; set; }
+    public DbSet<CalendarEvent> CalendarEvents { get; set; }
     
     public DbSet<PasswordResetToken> PasswordResetTokens { get; set; } = null!;
     public DbSet<EmailVerificationToken> EmailVerificationTokens { get; set; } = null!;

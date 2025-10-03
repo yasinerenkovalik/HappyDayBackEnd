@@ -31,6 +31,8 @@ public static class ServiceRegistrations
         services.AddScoped<IPasswordResetService, PasswordResetService>();
         services.AddScoped<IEmailVerificationTokenRepository, EmailVerificationTokenRepository>();
         services.AddScoped<IEmailVerificationService, EmailVerificationService>();
+        services.AddScoped<IPackageRepository, PackageRepository>();
+        services.AddScoped<ICalanderEvenetRepository, CalanderRepository>();
         
         return services;
     }

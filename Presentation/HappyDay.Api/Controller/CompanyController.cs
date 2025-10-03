@@ -1,11 +1,6 @@
 using HappyDay.Application.Features.Commands.Company.CreateCompany;
 using HappyDay.Application.Features.Commands.Company.DeleteCompany;
 using HappyDay.Application.Features.Commands.Company.UpdateCompany;
-
-// ✅ Doğru login query (CompanyLogin)
-
-
-// Email confirmation komutları
 using HappyDay.Application.Features.Commands.Auth.ConfirmEmail;
 using HappyDay.Application.Features.Commands.Auth.ResendConfirmation;
 using HappyDay.Application.Features.PasswordReset.RequestPasswordReset;
