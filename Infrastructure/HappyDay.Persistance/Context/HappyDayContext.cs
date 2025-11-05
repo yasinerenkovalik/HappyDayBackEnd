@@ -9,7 +9,7 @@ public class HappyDayContext : DbContext
     public HappyDayContext(DbContextOptions<HappyDayContext> options) : base(options) { }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("Host=aws-1-eu-north-1.pooler.supabase.com;Port=5432;Database=postgres;Username=postgres.bfnmewijysyhexybnkcn;Password=Eren1.2345;Ssl Mode=Require;Trust Server Certificate=true");
+        optionsBuilder.UseNpgsql("Host=193.111.77.142;Port=5432;Database=postgres;Username=postgres;Password=1aCbyXSakemvF5fxZtOFYWXnS9BZDJJ8jXmb9ABA2hNdSVby4ULD3Uah4Wf61F5t");
     }
 
     public DbSet<Company> Companies { get; set; }
