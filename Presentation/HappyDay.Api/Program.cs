@@ -97,6 +97,7 @@ builder.WebHost.ConfigureKestrel(options =>
 });
 
 var app = builder.Build();
+app.Urls.Add("http://*:8080");
 
 
 // ---------------- Middleware ----------------
