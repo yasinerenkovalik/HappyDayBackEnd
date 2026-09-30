@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -18,16 +19,19 @@ public class RegisterByInviteCommandHandler
     private readonly ICompanyInvitationService _invitations;
     private readonly IEmailVerificationService _emailVerification;
     private readonly BcryptPasswordHasher _hasher;
+    private readonly ILogger<RegisterByInviteCommandHandler> _logger;
 
     public RegisterByInviteCommandHandler(
         ICompanyRepository companies,
         ICompanyInvitationService invitations,
         IEmailVerificationService emailVerification,
-        IConfiguration config)
+        IConfiguration config,
+        ILogger<RegisterByInviteCommandHandler> logger)
     {
         _companies = companies;
         _invitations = invitations;
         _emailVerification = emailVerification;
+        _logger = logger;
 
         var sec    = config.GetSection("Security");
         var work   = sec.GetValue<int?>("PasswordWorkFactor") ?? 12;
@@ -58,7 +62,7 @@ public class RegisterByInviteCommandHandler
 
         // 3) Hashle
         var pwdHash = _hasher.Hash(req.Password);
-        Console.WriteLine(pwdHash);
+        _logger.LogInformation("Kullanici olusturuldu: {Email}", req.Email);
 
         // 4) Company oluştur
         var company = new Company

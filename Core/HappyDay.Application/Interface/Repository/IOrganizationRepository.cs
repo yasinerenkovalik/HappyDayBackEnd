@@ -15,6 +15,14 @@ public interface IOrganizationRepository:IGenericRepository<Organization>
     Task<PagedResult<GetFilteredOrganizationsQueryResponse>> GetFilteredAsync(
         GetFilteredOrganizationsQueryRequest request,
         CancellationToken ct);
+
+    /// <summary>Yayinda olan mekani getirir (aktif + sirketi aktif ve onayli).</summary>
+    Task<Organization?> GetPublishedByIdAsync(Guid id);
+
+    /// <summary>Herkese acik listelerde gorunmesi gereken (aktif + sirketi onayli) mekanlar.</summary>
+    Task<int> CountPublishedByCityAsync(int cityId);
+
+    Task<int> CountPublishedAsync();
    
 
     

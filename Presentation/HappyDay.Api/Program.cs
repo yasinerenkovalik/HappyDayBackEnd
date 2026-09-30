@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Diagnostics;
+using System.Threading.RateLimiting;
+using System.Globalization;
 using System.Text;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -18,6 +21,18 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 });
 
 // ---------------- Services ----------------
+
+// API her zaman nokta ondalık ayracı kullanmalı. Aksi halde sunucu kültürü tr-TR
+// olduğunda form'daki "40.98426" değeri 4098426 olarak ayrıştırılıyor.
+CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    options.SetDefaultCulture(CultureInfo.InvariantCulture.Name);
+    options.AddSupportedCultures(CultureInfo.InvariantCulture.Name);
+    options.AddSupportedUICultures(CultureInfo.InvariantCulture.Name);
+});
+
 builder.Services.AddControllers();
 
 // FluentValidation
@@ -53,13 +68,49 @@ builder.Services.AddSingleton<IPasswordHasher>(
     _ => new BcryptPasswordHasher(workFactor, pepper)
 );
 
-// CORS
+// CORS — izinli origin'ler config'den gelir, varsayilan olarak localhost Vite
+var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
+    ?? new[] { "http://localhost:3000", "http://localhost:5173" };
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", policy =>
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader());
+    options.AddPolicy("DefaultCors", policy =>
+    {
+        if (allowedOrigins.Length == 0 || allowedOrigins.Contains("*"))
+        {
+            policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+        }
+        else
+        {
+            policy.WithOrigins(allowedOrigins).AllowAnyMethod().AllowAnyHeader();
+        }
+    });
+});
+
+// Rate limiting — login / mesaj gonderme gibi spam'e acik endpoint'ler icin
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+
+    options.AddPolicy("Auth", httpContext =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+            _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 10,
+                Window = TimeSpan.FromMinutes(1),
+                QueueLimit = 0
+            }));
+
+    options.AddPolicy("PublicWrite", httpContext =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+            _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 5,
+                Window = TimeSpan.FromMinutes(1),
+                QueueLimit = 0
+            }));
 });
 
 // Authorization
@@ -72,7 +123,11 @@ builder.Services.AddAuthorization(options =>
         policy.RequireRole("Admin", "Company"));
 });
 
-// Auth (JWT)
+// Auth (JWT) — secret config'den gelir, kaynak kodda sabit tutulmaz
+var jwtSection = builder.Configuration.GetSection("JwtSettings");
+var jwtSecret = jwtSection.GetValue<string>("Secret")
+    ?? throw new InvalidOperationException("JwtSettings:Secret tanimli degil.");
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -82,11 +137,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
+            ClockSkew = TimeSpan.FromSeconds(30),
 
-            ValidIssuer = "yourdomain.com",
-            ValidAudience = "yourdomain.com",
-            IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes("BuCokGizliVeUzunBirSecretKeyOlsun1234"))
+            ValidIssuer = jwtSection.GetValue<string>("Issuer"),
+            ValidAudience = jwtSection.GetValue<string>("Audience"),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret))
         };
     });
 
@@ -94,6 +149,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.Limits.MinRequestBodyDataRate = null;
+    options.Limits.MaxRequestBodySize = 15 * 1024 * 1024; // 15 MB
 });
 
 var app = builder.Build();
@@ -101,16 +157,37 @@ app.Urls.Add("http://*:8080");
 
 
 // ---------------- Middleware ----------------
-app.UseSwagger();
-app.UseSwaggerUI(c =>
+if (app.Environment.IsDevelopment())
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "HappyDay API v1");
-    c.RoutePrefix = "swagger";
-});
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "HappyDay API v1");
+        c.RoutePrefix = "swagger";
+    });
+}
+
+// Global exception handling — yakalanmayan hatalar 500 + stack trace sizmasin
+app.UseExceptionHandler(errorApp => errorApp.Run(async context =>
+{
+    context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+    context.Response.ContentType = "application/json";
+
+    var feature = context.Features.Get<IExceptionHandlerFeature>();
+    app.Logger.LogError(feature?.Error, "Islenmeyen hata: {Path}", context.Request.Path);
+
+    await context.Response.WriteAsJsonAsync(new
+    {
+        isSuccess = false,
+        message = "Beklenmeyen bir hata olustu. Lutfen daha sonra tekrar deneyin."
+    });
+}));
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseCors("AllowAll");
+app.UseCors("DefaultCors");
+app.UseRequestLocalization();
+app.UseRateLimiter();
 
 app.UseAuthentication();
 app.UseAuthorization();

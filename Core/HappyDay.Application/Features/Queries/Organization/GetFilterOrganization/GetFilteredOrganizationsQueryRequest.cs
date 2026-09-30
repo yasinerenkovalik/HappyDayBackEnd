@@ -14,6 +14,11 @@ public class GetFilteredOrganizationsQueryRequest
     public bool? IsOutdoor { get; set; }
     public decimal? MaxPrice { get; set; }
     public bool? SortByPriceAsc { get; set; }
+    public int? MinCapacity { get; set; }
+    public int? MaxCapacity { get; set; }
+
+    /// <summary>Hizmet filtresi (orn. "Konaklama", "Catering"). Services dizisinde tam eslesme arar.</summary>
+    public string? Service { get; set; }
 
     // pagination
     private const int MaxPageSize = 100;

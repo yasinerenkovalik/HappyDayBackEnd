@@ -48,14 +48,26 @@ public class JwtService
         };
         return BuildToken(claims);
     }
-    public string GenerateUserToken(string userId)
+    /// <summary>Genel kullanıcı token'ı. Firma bağlantısı varsa CompanyId claim'i eklenir.</summary>
+    public string GenerateUserToken(string userId, string? companyId = null)
     {
         var claims = new List<Claim>
         {
             new(ClaimTypes.NameIdentifier, userId),
-            new(ClaimTypes.Role, "Admin"),
-            new("CompanyId", userId)   
         };
+
+        if (!string.IsNullOrWhiteSpace(companyId) && Guid.TryParse(companyId, out _))
+        {
+            claims.Add(new Claim("CompanyId", companyId));
+            claims.Add(new Claim(ClaimTypes.Role, "Company"));
+        }
+        else
+        {
+            // Firma bağlantısı olmayan kullanıcı ASLA Admin olamaz.
+            // Admin yetkisi yalnızca GenerateAdminToken ile üretilir.
+            claims.Add(new Claim(ClaimTypes.Role, "User"));
+        }
+
         return BuildToken(claims);
     }
 

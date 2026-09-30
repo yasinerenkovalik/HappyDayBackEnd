@@ -2,6 +2,7 @@ using AutoMapper;
 using HappyDay.Application.Interface.Repository;
 using HappyDay.Application.Wrappers;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace HappyDay.Application.Features.Commands.ContactMessage.CreateContactMessage
 {
@@ -13,19 +14,22 @@ namespace HappyDay.Application.Features.Commands.ContactMessage.CreateContactMes
         private readonly ICompanyRepository _companyRepository;
         private readonly IMapper _mapper;
         private readonly MailService _mailService;
+        private readonly ILogger<CreateContactMessageCommanRequestHandler> _logger;
 
         public CreateContactMessageCommanRequestHandler(
             IContactMessageRepository contactMessageRepository,
             IMapper mapper,
             IOrganizationRepository organizationRepository,
             ICompanyRepository companyRepository,
-            MailService mailService)
+            MailService mailService,
+            ILogger<CreateContactMessageCommanRequestHandler> logger)
         {
             _contactMessageRepository = contactMessageRepository ?? throw new ArgumentNullException(nameof(contactMessageRepository));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _organizationRepository = organizationRepository ?? throw new ArgumentNullException(nameof(organizationRepository));
             _companyRepository = companyRepository ?? throw new ArgumentNullException(nameof(companyRepository));
             _mailService = mailService ?? throw new ArgumentNullException(nameof(mailService));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public async Task<GeneralResponse<CreateContactMessageCommanResponse>> Handle(
@@ -76,21 +80,33 @@ namespace HappyDay.Application.Features.Commands.ContactMessage.CreateContactMes
 
             await _contactMessageRepository.AddAsync(contactMessage);
 
-            // Şirket bilgisi ve e-posta gönderimi
-            var companyInfo = await _companyRepository.GetByIdAsync(companyId);
-            if (companyInfo != null && !string.IsNullOrEmpty(companyInfo.Email))
+            // Şirket bilgisi ve e-posta gönderimi.
+            // Mail gönderimi başarısız olursa mesaj kaydı kaybolmamalı; hata yakalanıp loglanır.
+            var emailSent = false;
+            try
             {
-                await _mailService.SendAsync(
-                    companyInfo.Email,
-                    "Yeni Mesajınız Var",
-                    $"<p>{companyInfo.Name} size bir mesaj gönderdi.</p><p><b>Mesaj:</b> {request.Message}</p>"
-                );
+                var companyInfo = await _companyRepository.GetByIdAsync(companyId);
+                if (companyInfo != null && !string.IsNullOrEmpty(companyInfo.Email))
+                {
+                    await _mailService.SendAsync(
+                        companyInfo.Email,
+                        "Yeni Mesajınız Var",
+                        $"<p><b>{request.FullName}</b> size bir mesaj gönderdi.</p><p><b>Telefon:</b> {request.Phone}</p><p><b>E-posta:</b> {request.Email}</p><p><b>Mesaj:</b></p><p>{System.Net.WebUtility.HtmlEncode(request.Message)}</p>"
+                    );
+                    emailSent = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "İletişim mesajı e-posta ile gönderilemedi. CompanyId: {CompanyId}", companyId);
             }
 
             return new GeneralResponse<CreateContactMessageCommanResponse>
             {
                 isSuccess = true,
-                Message = "New contact message created and email sent"
+                Message = emailSent
+                    ? "Mesajınız kaydedildi ve işletmeye iletildi."
+                    : "Mesajınız kaydedildi."
             };
         }
     }

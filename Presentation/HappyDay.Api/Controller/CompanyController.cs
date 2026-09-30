@@ -60,7 +60,7 @@ namespace HappyDay.Api.Controller
             return Ok(res);
         }
 
-       // [Authorize(Roles = "Admin,Company")]
+         [Authorize(Roles = "Admin,Company")]
         [HttpPut("update")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> Update([FromForm] UpdateCompanyCommandRequest request)
@@ -69,6 +69,7 @@ namespace HappyDay.Api.Controller
             return Ok(res);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("delete")]
         public async Task<GeneralResponse<DeleteCompanyCommandResponse>> DeleteCompany([FromForm] DeleteCompanyCommandRequest request)
         {

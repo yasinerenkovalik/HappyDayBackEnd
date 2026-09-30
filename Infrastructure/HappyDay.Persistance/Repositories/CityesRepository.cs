@@ -16,4 +16,12 @@ public class CityesRepository:ICityesRepository
     {
         return await _context.Set<City>().OrderBy(c => c.Id).ToListAsync();
     }
+
+    public async Task<List<City>> GetAllWithCoordinatesAsync()
+    {
+        return await _context.Cities
+            .AsNoTracking()
+            .Where(c => c.Latitude != 0 && c.Longitude != 0)
+            .ToListAsync();
+    }
 }

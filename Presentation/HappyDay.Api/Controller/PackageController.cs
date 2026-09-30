@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using HappyDay.Application.Features.Commands.Package.CreatePackage;
 using HappyDay.Application.Features.Commands.Package.UpdatePackage;
 using HappyDay.Application.Features.Commands.Package.DeletePackage;
@@ -20,6 +21,7 @@ namespace HappyDay.Api.Controller
         }
 
         // CREATE
+        [Authorize(Roles = "Admin,Company")]
         [HttpPost("create")]
         public async Task<GeneralResponse<CreatePackageCommandResponse>> Create([FromBody] CreatePackageCommandRequest request)
         {
@@ -27,6 +29,7 @@ namespace HappyDay.Api.Controller
         }
 
         // GET BY ORGANIZATION
+        [Authorize(Roles = "Admin,Company")]
         [HttpPost("get-by-organization")]
         public async Task<GeneralResponse<List<GetByOrganizastionPackageResponse>>> GetByOrganization([FromBody] GetByOrganizastionPackageRequest request)
         {
@@ -34,6 +37,7 @@ namespace HappyDay.Api.Controller
         }
 
         // UPDATE
+        [Authorize(Roles = "Admin,Company")]
         [HttpPut("update")]
         public async Task<GeneralResponse<UpdatePackageCommandResponse>> Update([FromBody] UpdatePackageCommandRequest request)
         {
@@ -41,6 +45,7 @@ namespace HappyDay.Api.Controller
         }
 
         // DELETE
+        [Authorize(Roles = "Admin,Company")]
         [HttpDelete("delete/{id:guid}")]
         public async Task<GeneralResponse<DeletePackageCommandResponse>> Delete(Guid id)
         {

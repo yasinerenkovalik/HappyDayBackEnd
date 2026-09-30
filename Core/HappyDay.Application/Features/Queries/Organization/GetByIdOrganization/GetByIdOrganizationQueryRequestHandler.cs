@@ -18,7 +18,8 @@ public class GetByIdOrganizationQueryRequestHandler:IRequestHandler<GetByIdOrgan
 
     public async Task<GeneralResponse<GetByIdOrganizationQueryResponse>> Handle(GetByIdOrganizationQueryRequest request, CancellationToken cancellationToken)
     {
-        var result= await _organizationRepository.GetByIdAsync(request.Id);
+        // Herkese acik detay: yalnizca yayinda olan mekanlar.
+        var result = await _organizationRepository.GetPublishedByIdAsync(request.Id);
         if (result == null)
         {
             return new GeneralResponse<GetByIdOrganizationQueryResponse>()

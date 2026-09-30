@@ -157,7 +157,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     public async Task<T> GetByIdAsync(Guid Id)
     {
         return await _appContext.Set<T>()
-            .FirstOrDefaultAsync(x => x.Id == Id);
+            .FirstOrDefaultAsync(x => x.Id == Id && x.IsActivated);
     }
 
     public async Task<T> UpdateAsync(T entity)

@@ -20,7 +20,10 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
     public async Task<GetOrganizationWithImagesResponse> GetOrganizationWithImages(Guid Id)
     {
         var result = await _context.Organizations
-            .Where(o => o.Id == Id && o.IsActivated == true)
+            .Where(o => o.Id == Id
+                    && o.IsActivated
+                    && o.Company.IsActivated
+                    && o.Company.IsApproved)
             .Select(o => new GetOrganizationWithImagesResponse
             {
                 Id = o.Id,
@@ -58,10 +61,14 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
     GetFilteredOrganizationsQueryRequest request,
     CancellationToken ct)
 {
+    // Herkese acik listeye yalnizca YAYINDA olan mekanlar girer:
+    // mekan aktif + sirket aktif + sirket onayli.
     var query = _context.Organizations
         .Include(x => x.Company.City)
         .Include(x => x.Company.District)
-        .Where(x => x.IsActivated == true)
+        .Where(x => x.IsActivated
+                 && x.Company.IsActivated
+                 && x.Company.IsApproved)
         .AsNoTracking()
         .AsQueryable();
 
@@ -79,6 +86,18 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
 
     if (request.MaxPrice.HasValue)
         query = query.Where(x => x.Price <= request.MaxPrice);
+
+    if (request.MinCapacity.HasValue)
+        query = query.Where(x => x.MaxGuestCount >= request.MinCapacity);
+
+    if (request.MaxCapacity.HasValue)
+        query = query.Where(x => x.MaxGuestCount <= request.MaxCapacity);
+
+    if (!string.IsNullOrWhiteSpace(request.Service))
+    {
+        var service = request.Service.Trim().ToLower();
+        query = query.Where(x => x.Services.Any(s => s.ToLower().Contains(service)));
+    }
 
     // 1) toplam kayıt
     var totalCount = await query.CountAsync(ct);
@@ -106,7 +125,16 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
         {
             Id = x.Id,
             Title = x.Title,
+            Description = x.Description,
             Price = x.Price,
+            MaxGuestCount = x.MaxGuestCount,
+            Services = x.Services,
+            Duration = x.Duration,
+            IsOutdoor = x.IsOutdoor,
+            ReservationNote = x.ReservationNote,
+            CancelPolicy = x.CancelPolicy,
+            VideoUrl = x.VideoUrl,
+            CompanyId = x.CompanyId,
             CityId = x.Company.CityId,
             CityName = x.Company.City.CityName,
             DistrictId = x.Company.DistrictId,
@@ -128,16 +156,50 @@ public class OrganizationRepository:GenericRepository<Organization>,IOrganizatio
 
 
 
+    public Task<Organization?> GetPublishedByIdAsync(Guid id)
+    {
+        return _context.Organizations
+            .Include(o => o.Company)
+            .Include(o => o.Packages)
+            .Include(o => o.OrganizationImages)
+            .FirstOrDefaultAsync(o => o.Id == id
+                                   && o.IsActivated
+                                   && o.Company.IsActivated
+                                   && o.Company.IsApproved);
+    }
+
+    public Task<int> CountPublishedByCityAsync(int cityId)
+    {
+        return _context.Organizations.CountAsync(o =>
+            o.IsActivated
+            && o.Company.IsActivated
+            && o.Company.IsApproved
+            && o.Company.CityId == cityId);
+    }
+
+    public Task<int> CountPublishedAsync()
+    {
+        return _context.Organizations.CountAsync(o =>
+            o.IsActivated && o.Company.IsActivated && o.Company.IsApproved);
+    }
+
     public async Task<List<Organization>> GetByCompany(Guid companyId)
     {
-        return await _context.Organizations.Where(o => o.CompanyId == companyId && o.IsActivated==true).ToListAsync();
+        // Firma paneli kendi kayitlarini onay durumundan bagimsiz gormelidir.
+        return await _context.Organizations
+            .Where(o => o.CompanyId == companyId && o.IsActivated)
+            .ToListAsync();
     }
 
    
     public async Task<List<Organization>> GetFeaturedAsync(GetFeaturedQueryRequest  request)
     {
         return await _context.Organizations
-            .Where(o => o.IsFeatured && o.IsActivated && o.CategoryId==request.Id)
+            .Where(o => o.IsFeatured
+                    && o.IsActivated
+                    && o.Company.IsActivated
+                    && o.Company.IsApproved
+                    && o.CategoryId == request.Id)
             .ToListAsync();
     }
 }

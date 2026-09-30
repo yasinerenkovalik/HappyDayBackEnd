@@ -14,5 +14,15 @@ public class User:BaseEntity
     public string Adress { get; set; }
     public string PhoneNumber { get; set; }
     public bool Sex { get; set; }
-    
+
+    /// <summary>Kullanıcının bağlı olduğu firma. Firma yetkilileri mesaj havuzunu buradan görür.</summary>
+    public Guid? CompanyId { get; set; }
+    public Company? Company { get; set; }
+
+    /// <summary>
+    /// Platform rolü. "Admin" yönetim paneline erişebilir, "User" erişemez.
+    /// Firma yöneticiliği CompanyId üzerinden belirlenir.
+    /// </summary>
+    public string Role { get; set; } = "User";
 }
+

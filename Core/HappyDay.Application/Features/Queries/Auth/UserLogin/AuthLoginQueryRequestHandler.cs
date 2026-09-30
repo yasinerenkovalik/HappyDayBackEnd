@@ -56,8 +56,12 @@ namespace HappyDay.Application.Features.Queries.AutLogin
                 };
             }
 
-            // JWT üret (rol vs. eklemek istersen burada claim ekleyebilirsin)
-            var token = _jwtService.GenerateUserToken(user.Id.ToString());
+            // JWT üret — kullanıcı bir firmaya bağlıysa CompanyId claim'i de eklenir
+            var companyId = user.CompanyId.HasValue && user.CompanyId.Value != Guid.Empty
+                ? user.CompanyId.Value.ToString()
+                : null;
+
+            var token = _jwtService.GenerateUserToken(user.Id.ToString(), companyId);
 
             return new GeneralResponse<AuthLoginQueryResponse>
             {

@@ -25,9 +25,6 @@ public class GetAllOrganizationQueryRequestHandler
             pageSize: request.PageSize,
             ct: cancellationToken,
             selector: q => q
-                .Include(o => o.Company.City)
-                .Include(o => o.Company.City)
-                
                 .Select(o => new GetAllOrganizationQueryResponse
                 {
                     Id = o.Id,
@@ -35,8 +32,12 @@ public class GetAllOrganizationQueryRequestHandler
                     Description = o.Description,
                     Price = o.Price,
                     MaxGuestCount = o.MaxGuestCount,
-                    CityId=o.Company.CityId,
+                    Services = o.Services,
+                    CompanyId = o.CompanyId,
+                    CityId = o.Company.CityId,
+                    CityName = o.Company.City.CityName,
                     DistrictId = o.Company.DistrictId,
+                    DistrictName = o.Company.District.DistrictName,
                     Longitude = o.Company.Longitude,
                     Latitude = o.Company.Latitude,
                     IsOutdoor = o.IsOutdoor,

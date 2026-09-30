@@ -11,18 +11,22 @@ public class GetByCompanyContactMessageRequestHandler
     private readonly IContactMessageRepository _contactMessageRepository;
     private readonly IMapper _mapper;
 
-    public GetByCompanyContactMessageRequestHandler(IContactMessageRepository contactMessageRepository, IMapper mapper)
+    public GetByCompanyContactMessageRequestHandler(
+        IContactMessageRepository contactMessageRepository,
+        IMapper mapper)
     {
         _contactMessageRepository = contactMessageRepository;
         _mapper = mapper;
     }
 
-    public async Task<GeneralResponse<List<GetByCompanyContactMessageResponse>>> Handle(GetByCompanyContactMessageRequest request, CancellationToken cancellationToken)
+    public async Task<GeneralResponse<List<GetByCompanyContactMessageResponse>>> Handle(
+        GetByCompanyContactMessageRequest request,
+        CancellationToken cancellationToken)
     {
-     
-        var contactMessages = await _contactMessageRepository.GetByCompany(request.CompanyId);
+        // Mesajları bağlı oldukları mekan bilgisiyle birlikte getir
+        var messages = await _contactMessageRepository.GetByCompanyWithVenue(request.CompanyId);
 
-        if (contactMessages == null || !contactMessages.Any())
+        if (messages == null || !messages.Any())
         {
             return new GeneralResponse<List<GetByCompanyContactMessageResponse>>
             {
@@ -32,8 +36,7 @@ public class GetByCompanyContactMessageRequestHandler
             };
         }
 
-      
-        var response = _mapper.Map<List<GetByCompanyContactMessageResponse>>(contactMessages);
+        var response = _mapper.Map<List<GetByCompanyContactMessageResponse>>(messages);
 
         return new GeneralResponse<List<GetByCompanyContactMessageResponse>>
         {
